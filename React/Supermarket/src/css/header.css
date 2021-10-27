@@ -1,0 +1,22 @@
+:root{
+    --Azul: #5D00F5;
+    --vermelho: #ee1212;
+    --verdeClaro: #CAE57A;
+    --verde: #2DA72D;
+    --verdeEscuro: #004400;
+}
+
+header{
+    background-color: var(--verde);
+    padding: 5px 10px;
+    height: 60px;
+}
+
+header > *{
+    display: inline-block;
+}
+
+h1#supermarket_name{
+    color: var(--vermelho);
+    line-height: 60px;
+}

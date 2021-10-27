@@ -1,0 +1,72 @@
+{
+    "p1": {
+        "produto": "Óleo de soja",
+        "marca": "Liza",
+        "preco": 7.45,
+        "img": "../img/oleo_de_soja-Liza.jpg",
+        "descricao": "Garrafa de 500ml de Óleo de cozinha da marca liza"
+    },
+    "p2": {
+        "produto": "Arroz",
+        "marca": "Sabor Máximo",
+        "preco": 20.19,
+        "img": "../img/arroz-sabor_maximo.jpg",
+        "descricao": "Pacote de 5kg de Arroz da marca Sabor Máximo" 
+    },
+    "p3": {
+        "produto": "Feijão",
+        "marca": "Kicaldo",
+        "preco": 6.59,
+        "img": "../img/feijao-kicaldo.jpeg",
+        "descricao": "Pacote de 1kg de feijão da marca Kicaldo"
+    },
+    "p4": {
+        "produto": "Chocolate Diamante Negro",
+        "marca": "Nestle",
+        "preco": 7.50,
+        "img": "../img/diamente_negro-Nestle.jpg",
+        "descricao": "500g de chocolate diamante negro" 
+    },
+    "p5": {
+        "produto": "Monster",
+        "marca": "Mosnter",
+        "preco": 10.59,
+        "img": "../img/monster-monster.jpg",
+        "descricao": "473ml de energético monster" 
+    },
+    "p6": {
+        "produto": "Alface",
+        "marca": "Prima Verde",
+        "preco": 4.79,
+        "img": "../img/alface-prima_verde.jpg",
+        "descricao": "1 maço de alface da marca Prima Verde"
+    },
+    "p7": {
+        "produto": "Tomate",
+        "marca": "Bertolin",
+        "preco": 5.74,
+        "img": "../img/tomate-Bertolin.jpg",
+        "descricao": "400g de tomate da marca Bertolin"
+    },
+    "p8": {
+        "produto": "Bono sabor chocolate",
+        "marca": "Nestle",
+        "preco": 2.99,
+        "img": "../img/bono-Nestle.jpg",
+        "descricao": "Pacote de 140g de bolacha Bono"
+    },
+    "p9": {
+        "produto": "Detergente Ypê",
+        "marca": "Ypê",
+        "preco": 2.19,
+        "img": "../img/detergente-Ype.jpg",
+        "descricao": "Garrafa de detergente de 500ml da marca Ypê"
+    },
+    "p10": {
+        "produto": "Carne fraldinha",
+        "marca": "Friboi",
+        "preco": 32.90,
+        "img": "../img/fraldinha-Friboi.jpg",
+        "descricao": "1kg de carne fraldinha da marca Friboi"
+    }
+}

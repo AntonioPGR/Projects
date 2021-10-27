@@ -1,0 +1,38 @@
+:root{
+    --Azul: #5D00F5;
+    --vermelho: #ee1212;
+    --verdeClaro: #CAE57A;
+    --verde: #2DA72D;
+    --verdeEscuro: #004400;
+}
+
+footer{
+    height: 100px;
+    background-color: var(--verde);
+    width: 100%;
+    padding: 15px;
+}
+
+footer > *, a{
+    color: var(--vermelho);
+}
+
+footer > * > a{
+    text-decoration: underline;
+}
+
+nav#links{
+    float: left;
+    max-width: 50%;
+}
+
+.footer_link{
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+p#credits{
+    float: right;
+    line-height: 70px;
+}
