@@ -1,0 +1,43 @@
+:root{
+   --yellow: #F28E13;
+   --orange: #F25C05;
+   --red: #F21905;
+   --Mred: #A60303;
+   --DarkRed: #730202;
+}
+
+header{
+   background-color: var(--orange);
+   padding: 5px 10px;
+   height: 60px;
+}
+
+header > *{
+   display: inline-block;
+}
+
+img#logoImg{
+   height: 47px;
+}
+
+div#ShoppingCartButton{
+   float: right;
+   padding: 5px;
+   border: 2px solid var(--yellow);
+   border-radius: 50%;
+}
+
+div#ShoppingCartButton:hover{
+   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+div#ShoppingCartButton > *{
+   display: inline-block;
+}
+
+div#numberCartItens{
+   position: relative;
+   left: 3px;
+}
+
+

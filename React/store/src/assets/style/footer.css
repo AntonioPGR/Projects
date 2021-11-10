@@ -1,0 +1,10 @@
+footer{
+   background-color: #F25C05;
+   padding: 5px 10px;
+   height: 30px;
+   text-align: center;
+}
+
+p#createdBy{
+   color: #730202;
+}
