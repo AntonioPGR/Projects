@@ -7,19 +7,3 @@
 	font: inherit;
 	vertical-align: baseline;
 }
-
-div#buyButtonDiv{
-   text-align: center;
-}
-
-button.addShoppingCartButton{
-   text-align: center;
-   background-color: #e9210f;
-   padding: 7px;
-   border: 2px solid #fa5e03;
-   border-radius: 10px;
-}
-
-button.addShoppingCartButton:hover{
-   background-color: #bd1b0c;
-}

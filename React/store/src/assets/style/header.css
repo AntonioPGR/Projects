@@ -20,8 +20,11 @@ img#logoImg{
    height: 47px;
 }
 
-div#ShoppingCartButton{
+div#shoppingCartLink{
    float: right;
+}
+
+div#ShoppingCartButton{
    padding: 5px;
    border: 2px solid var(--yellow);
    border-radius: 50%;

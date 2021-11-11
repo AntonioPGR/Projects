@@ -1,23 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './assets/style/global.css'
-
-import { Header } from './components/header';
-import { PageBody } from './components/PageBody';
-import { Footer } from './components/footer';
+import { BrowserRouter } from 'react-router-dom';
+import { App } from './components/app';
 
 class Page extends React.Component{
     render(){
-       return(
-         <div id="page">
-            <Header />
-
-            <PageBody />
-
-            <Footer />
-         </div>
-       )
+      return(
+         <BrowserRouter>
+            <App />
+         </BrowserRouter>
+      )
     }
 }
 
