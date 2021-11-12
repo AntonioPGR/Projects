@@ -4,7 +4,7 @@ import '../assets/style/global.css'
 
 import { Header } from './header';
 import { Footer } from './footer';
-import { LoadBody } from './products/loadyBody';
+import { LoadBody } from './loadBody';
 import { ShoppingCart } from './shoppingCart';
 
 import {Routes, Route} from 'react-router-dom';
