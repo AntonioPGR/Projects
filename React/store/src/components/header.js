@@ -8,9 +8,11 @@ import { Link } from 'react-router-dom';
 export function Header(props){
    return(
       <header>
-         <div id="logoDiv">
-            <img id="logoImg" alt="logo da loja " src={Logo} />
-         </div>
+         <Link to="/" >
+            <div id="logoDiv">
+               <img id="logoImg" alt="logo da loja " src={Logo} />
+            </div>
+         </Link>
          <div id="shoppingCartLink">
             <Link to="/shoppingcart">
                <div id="ShoppingCartButton">

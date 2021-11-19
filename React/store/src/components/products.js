@@ -1,7 +1,7 @@
 import React from 'react';
 import '../assets/style/products.css'
 
-export function Products(props){
+export function Product(props){
    const product = props.product_obj;
 
    return(
@@ -19,7 +19,7 @@ export function Products(props){
          <p className="productPrice">{product.price}</p>
 
          <div id="buyButtonDiv">
-            <button className="addShoppingCartButton">
+            <button onClick={props.onClick} className="addShoppingCartButton">
                Add to ShoppingCart
             </button>
          </div>
