@@ -7,21 +7,21 @@ export default function Users(props){
       const users = requestUsersToApi(search);
    }
 
-   const requestUsersToApi = () => {
-
-   }
-
-   const filterInput = (ev) => {
-      ev.key ==
+   const requestUsersToApi = (search) => {
+      fetch(`http://localhost:8080/?query=${search}`, {
+         method: 'GET',
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
    }
 
    return(
       <div>
          <h1>All Usuarios</h1>
-         <form id="findUsers" OnSubmit={handleFormSubmit}>
+         <form id="findUsers" onSubmit={handleFormSubmit}>
             <div id="searchBar">
-               <input onKeyUp={filterInput} type="text" id="userSearchBar" placeholder="Searching for someone?..." />
-               <input type="button" value="&#128270; Search" />
+               <input type="text" id="userSearchBar" placeholder="Searching for someone?..." />
+               <input type="submit" value="&#128270; Search" />
             </div>
          </form>
          <UserTable users={''} />
