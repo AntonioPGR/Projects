@@ -41,10 +41,10 @@ async function insertIntoUsers(userInfo){
    return 200
 }
 
-async function updateUsers(id, newUserInfo){
+async function updateUsers(newUserInfo){
    const conn = await connectToDataBase();
    const query = `UPDATE users SET nome = ?, idade = ?, sexo = ? WHERE id = ?;`;
-   const user_array = [newUserInfo.nome, newUserInfo.idade, newUserInfo.sexo, id]
+   const user_array = [newUserInfo.nome, newUserInfo.idade, newUserInfo.sexo, newUserInfo.id]
 
    await conn.query(query, user_array);
 }

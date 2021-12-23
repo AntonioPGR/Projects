@@ -14,6 +14,7 @@ const headers = {
 
 http.createServer((req, res)=>{
    const method = req.method
+   console.log(method)
 
    switch (method) {
       case 'GET':
@@ -77,7 +78,27 @@ function handlePostMethod(req, res){
 }
 
 function handlePutMethod(req, res){
+   let data = '';
+   req.on('data', chunk => {
+      data += chunk.toString();
+   });
 
+   req.on('end', async () => {
+      const body = JSON.parse(data);
+      console.clear(body)
+      db.updateUsers(body)
+      .then(statusCode => {
+
+         if(statusCode === 200){
+            res.writeHead(201, headers);
+         } else {
+            res.writeHead(400, headers)
+         }
+         res.end();
+
+      })
+      .catch(err => console.log(err))
+   });
 }
 
 function handleDeleteMethod(req, res){

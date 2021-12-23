@@ -4,8 +4,6 @@ export default function Header(props){
    const links = {
       "See Users": "/",
       "Create User": '/create-user',
-      "Edit User": '/edit-user',
-      "Delete User": '/delete-user',
    }
 
    const loadLinks = () => {

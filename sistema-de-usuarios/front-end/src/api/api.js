@@ -18,8 +18,12 @@ async function createUsers(userInfo){
    return request
 }
 
-async function updateUsers(id, newUserInfo){
-
+async function updateUsers(newUserInfo){
+   const request = await fetch(`http://localhost:5000`, {
+      method: 'PUT',
+      body: JSON.stringify(newUserInfo)
+   })
+   return request
 }
 
 export { getUsers, createUsers, updateUsers };
