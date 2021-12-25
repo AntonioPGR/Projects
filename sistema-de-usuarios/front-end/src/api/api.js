@@ -1,29 +1,41 @@
 async function getUsers(search){
-   let request;
-   if (search){
-      request = await fetch(`http://localhost:5000/?searchp=${search}`)
-   } else {
-      request = await fetch(`http://localhost:5000`)
+   const httpInfo = {
+      method: 'GET',
    }
-   
-   const response = await request.json()
-   return response;
+   const urlComplement = search? `searchp=${search}`:``;
+
+   const response = await requestToBackend(httpInfo, urlComplement);
+   return response
 }
 
 async function createUsers(userInfo){
-   const request = await fetch(`http://localhost:5000`, {
+   const httpInfo = {
       method: 'POST',
       body: JSON.stringify(userInfo)
-   })
-   return request
+   }
+
+   const response = await requestToBackend(httpInfo);
+   return response
 }
 
 async function updateUsers(newUserInfo){
-   const request = await fetch(`http://localhost:5000`, {
+   const httpInfo = {
       method: 'PUT',
       body: JSON.stringify(newUserInfo)
-   })
-   return request
+   }
+
+   const response = await requestToBackend(httpInfo);
+   return response
+}
+
+async function requestToBackend(httpInfo, urlComplement=''){
+   try{
+      const request = await fetch(`http://localhost:5000/${urlComplement}`, httpInfo);
+      const responseData = await request.json();
+      return responseData;
+   } catch(e) {
+      return Error(e)
+   }
 }
 
 export { getUsers, createUsers, updateUsers };

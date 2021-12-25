@@ -16,7 +16,7 @@ export default function CreateUsers(props){
       const main = document.querySelector("main#createUserForm")
       const infoP = document.createElement("p")
       infoP.id = "createdInfo"
-      infoP.textContent = status === 201? "User created successfully": "User not created";
+      infoP.textContent = status === 201? "User created successfully" : "Can't connect to server, User not created";
       main.appendChild(infoP)
    }
 
