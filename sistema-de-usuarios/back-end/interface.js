@@ -23,7 +23,7 @@ http.createServer((req, res)=>{
       case 'POST':
          handlePostMethod(req, res);
          break;
-      case 'PUT':
+      case 'OPTIONS':
          handlePutMethod(req, res);
          break;
       case 'DELETE':

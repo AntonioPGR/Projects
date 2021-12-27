@@ -7,8 +7,10 @@ export default function EditUser(props){
    const { id } = useParams();
 
    const userEdition = async (userInfo) => {
-      const fullUSerInfo = userInfo['id'] = id
-      updateUsers(userInfo)
+      const fullUserInfo = userInfo
+      fullUserInfo['id'] = id
+      console.log(fullUserInfo)
+      updateUsers(fullUserInfo)
    }
 
    return(
