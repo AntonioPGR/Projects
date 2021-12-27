@@ -6,7 +6,6 @@ export default function CreateUsers(props){
    const userCreation = async (userInfo) => {
       const request = await createUsers(userInfo)
       const status = request.status
-      console.log(status)
 
       try {
          const p = document.querySelector("p#createdInfo")
@@ -16,7 +15,7 @@ export default function CreateUsers(props){
       const main = document.querySelector("main#createUserForm")
       const infoP = document.createElement("p")
       infoP.id = "createdInfo"
-      infoP.textContent = status === 201? "User created successfully" : "Can't connect to server, User not created";
+      infoP.textContent = status === 201? `User created successfully` : "Can't connect to server, User not created";
       main.appendChild(infoP)
    }
 

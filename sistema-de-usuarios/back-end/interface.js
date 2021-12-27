@@ -23,12 +23,6 @@ http.createServer((req, res)=>{
       case 'POST':
          handlePostMethod(req, res);
          break;
-      case 'PUT':
-         handlePutMethod(req, res);
-         break;
-      case 'DELETE':
-         handleDeleteMethod(req, res);
-         break;
       default: 
          res.writeHead(405, headers);
          res.end();
@@ -38,11 +32,27 @@ http.createServer((req, res)=>{
 
 function handleGetMethod(req, res){
    const url_parts = url.parse(req.url, true);
-   const query = url_parts.query;
-   const searchParam = query.searchp
-   let loadUsers = searchParam !== undefined? db.selectUsers(`nome LIKE '%${searchParam}%'`): db.selectUsers();
+   const query = JSON.parse(JSON.stringify(url_parts.query));
 
-   loadUsers
+   let users;
+   if(Object.keys(query).length === 0){
+      users = db.selectUsers()
+   } else {
+
+      if(query.searchp){
+         const searchParam = query.searchp
+         users = db.selectUsers(`nome LIKE '%${searchParam}%'`)
+      } else if(query.id){
+         const searchParam = query.id
+         users = db.selectUsers(`id = ${searchParam}`)
+      } else {
+         res.writeHead(204, headers);
+         res.end()
+      }
+
+   };
+
+   users
    .then(users_list => {
       const users = users_list
 
@@ -62,45 +72,31 @@ function handlePostMethod(req, res){
 
    req.on('end', async () => {
       const body = JSON.parse(data);
-      db.insertIntoUsers(body)
-      .then(statusCode => {
+      const func = body.function;
 
-         if(statusCode === 200){
-            res.writeHead(201, headers);
-         } else {
-            res.writeHead(400, headers)
-         }
-         res.end();
-
-      })
-      .catch(err => console.log(err))
+      switch(func){
+         case 'create': 
+            db.insertIntoUsers({
+               "nome": body.nome,
+               "idade": body.idade, 
+               "sexo": body.sexo,
+            });
+            res.writeHead(200, headers)
+            res.end();
+            break;
+         case 'update':
+            db.updateUsers({
+               "nome": body.nome,
+               "idade": body.idade, 
+               "sexo": body.sexo,
+               "id": body.id,
+            });
+            res.writeHead(200, headers)
+            res.end();
+            break;
+         default:
+            res.writeHead(405, headers)
+            res.end();
+      }
    });
-}
-
-function handlePutMethod(req, res){
-   let data = '';
-   req.on('data', chunk => {
-      data += chunk.toString();
-   });
-
-   req.on('end', async () => {
-      const body = JSON.parse(data);
-      console.clear(body)
-      db.updateUsers(body)
-      .then(statusCode => {
-
-         if(statusCode === 200){
-            res.writeHead(201, headers);
-         } else {
-            res.writeHead(400, headers)
-         }
-         res.end();
-
-      })
-      .catch(err => console.log(err))
-   });
-}
-
-function handleDeleteMethod(req, res){
-
 }
