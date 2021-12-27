@@ -1,11 +1,12 @@
 import UserForm from "./userForm";
 import { getUsers, updateUsers } from "../api/api";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
 export default function EditUser(props){
    const { id } = useParams();
    const [user, setUser] = useState();
+   const [updated, setUpdated] = useState(false);
 
    const getAtualUser = async () => {
       const user = await getUsers(null, id);
@@ -30,8 +31,21 @@ export default function EditUser(props){
       }
 
       const response = await updateUsers(fullUserInfo)
-      
-      console.log(response)
+      const status = response.status
+
+      if (status === 200) { setUpdated(true) }
+      else {
+         try {
+            const p = document.querySelector("p#createdInfo")
+            p.parentNode.removeChild(p);
+         } catch (e) {}
+   
+         const main = document.querySelector("main#createUserForm")
+         const infoP = document.createElement("p")
+         infoP.id = "createdInfo"
+         infoP.textContent = "Can't connect to server, User not created";
+         main.appendChild(infoP)
+      }
    }
 
    const showUserInfo = () => {
@@ -60,8 +74,11 @@ export default function EditUser(props){
    }
    if(Object.keys(user).length === 0){
       return (
-         <p>Usuario não encontrado</p>
+         <p>Não foi possivel carregar as informações do usuario</p>
       )
+   }
+   if(updated) {
+      return <Navigate to="/" />
    }
    return(
       <main id="editUserForm">

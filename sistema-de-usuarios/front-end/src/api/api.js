@@ -23,7 +23,6 @@ async function createUsers(userInfo){
    }
 
    const response = await requestToBackend(httpInfo);
-   console.log(response)
    return response
 }
 
@@ -36,6 +35,20 @@ async function updateUsers(newUserInfo){
    const httpInfo = {
       method: 'POST',
       body: JSON.stringify(request_body)
+   }
+
+   const response = await requestToBackend(httpInfo);
+   console.log(response)
+   return response
+}
+
+async function deleteUsers(id){
+   const httpInfo = {
+      method: 'POST',
+      body: JSON.stringify({
+         "id": id,
+         "function": "delete"
+      })
    }
 
    const response = await requestToBackend(httpInfo);
@@ -57,4 +70,4 @@ async function requestToBackend(httpInfo, urlComplement=''){
    }
 }
 
-export { getUsers, createUsers, updateUsers };
+export { getUsers, createUsers, updateUsers, deleteUsers };

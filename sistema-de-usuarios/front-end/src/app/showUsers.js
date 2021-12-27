@@ -2,6 +2,7 @@ import UserTable from './userTable.js';
 import SearchForm from './searchForm.js';
 import { getUsers } from '../api/api.js';
 import { useState, useEffect } from 'react'
+import { deleteUsers } from '../api/api.js';
 
 
 export default function ShowUsers(props){
@@ -39,8 +40,14 @@ export default function ShowUsers(props){
             <p>Não foi possivel conectar-se ao servidor</p>
          )
       } else {
-         return <UserTable searchP={searchP} users={users} />
+         return <UserTable onDelete={(id)=>deleteUser(id)} searchP={searchP} users={users} />
       }
+   }
+
+   const deleteUser = async (id) => {
+      const response = await deleteUsers(id)
+      searchUsers();
+      console.log(response)
    }
 
    useEffect(() => {
@@ -49,7 +56,7 @@ export default function ShowUsers(props){
 
    return(
       <div>
-         <h1>All Usuarios</h1>
+         <h1>All Users:</h1>
          <SearchForm formSubmit={handleFormSubmit} />
          {setWhatIsShowing()}
       </div>

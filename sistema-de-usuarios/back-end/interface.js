@@ -94,6 +94,11 @@ function handlePostMethod(req, res){
             res.writeHead(200, headers)
             res.end();
             break;
+         case 'delete':
+            db.deleteUsers(body.id)
+            res.writeHead(200, headers)
+            res.end();
+            break;
          default:
             res.writeHead(405, headers)
             res.end();
