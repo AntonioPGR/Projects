@@ -14,7 +14,7 @@ export default function UserTable(props){
                <td>{atualUser.sexo === "M"? "Masculino":"Feminino"}</td>
                <td>
                   <Link to={`/edit-user/${atualUser.id}`} >Edit</Link>
-                  <Link to={`/delete-user/${atualUser.id}`} >Delete</Link>
+                  <button onClick={()=>props.onDelete(atualUser.id)}>Delete</button>
                </td>
             </tr>
          )

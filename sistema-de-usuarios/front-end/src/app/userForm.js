@@ -14,11 +14,11 @@ export default function UserForm(props){
       <form onSubmit={handleSubmit}>
          <div>
             <label htmlFor="username">Username: </label>
-            <input type="text" name="username" id="usernameInput" placeholder="Username here"></input>
+            <input autoComplete="off" type="text" name="username" id="usernameInput" placeholder="Username here"></input>
          </div>
          <div>
             <label htmlFor="age">Age: </label>
-            <input type="number" name="age" id="ageInput" placeholder="User age here"></input>
+            <input autoComplete="off" type="number" name="age" id="ageInput" placeholder="User age here"></input>
          </div>
          <div>
             <label htmlFor="sex">Sex: </label>
