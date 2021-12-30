@@ -11,11 +11,9 @@ export default function Header(props){
    // faz o request ao json que guarda os links do header
    const loadLinks = async () => {
       try{
-         
          const request = fetch(headerLinksUrl)
          const response = request.json()
          console.log(response)
-
       } catch(e){
          console.log(e)
       }      
