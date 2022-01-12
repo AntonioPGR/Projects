@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState} from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import pageInfoJson from './json/pageInfo.json'
@@ -7,10 +7,12 @@ import Header from './components/header.js'
 import Main from './components/main.js'
 import Footer from './components/footer.js'
 
+import Style from "./assets/css/index.css"
+
 function App(){
    // INFO: QUANDO CRIAR O BACKEND, TROCAR STATUS DE "loaded" PARA "created" e remover o json importado
    // guarda o json com as informações a serem exibidas pela pagina
-   const [pageInfo, setPageInfo] = useState({
+   const [pageInfo] = useState({
       status: "loaded",
       ...pageInfoJson
    })

@@ -1,7 +1,6 @@
-import PageIntro from './mainComponents/pageIntro.js';
 import Presentetion from './mainComponents/presentation.js';
 import RoadMap from './mainComponents/roadMap.js';
-import Projects from './mainComponents/projects.js'
+import ProjectsSession from './mainComponents/projects.js'
 
 
 export default function Main(props){
@@ -13,10 +12,9 @@ export default function Main(props){
 
    return(
       <main>
-         <PageIntro info={ passInfo("passIntro") } />
          <Presentetion info={ passInfo("presentation") } />
          <RoadMap info={ passInfo("roadMap") } />
-         <Projects info={ passInfo("projects") } />
+         <ProjectsSession info={ passInfo("projects") } />
       </main>
    )
 }
