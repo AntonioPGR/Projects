@@ -18,7 +18,7 @@ function ImagesContainer(props){
       return images.map((key, index)=>{
          return ( 
             <Image key={index}>
-               <img src={key.link} alt="beach image" />
+               <img src={key.link} alt={key} />
                <p> {key.artist} </p>
             </Image>
          )
