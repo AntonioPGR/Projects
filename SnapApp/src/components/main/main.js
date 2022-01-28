@@ -2,7 +2,7 @@ import NavMenu from './navMenu.js';
 import ImagesContainer from './ImagesContainer.js'
 import { StyledMain } from './main-style.js'
 import { getImages } from '../../api/searchImages.js';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 function Main(props){ 
    const [ImagesJson, setImagesJson] = useState([])
