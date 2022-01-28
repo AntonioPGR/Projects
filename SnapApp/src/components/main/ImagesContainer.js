@@ -1,4 +1,5 @@
 import { Image, ImagesDiv } from './Images-style.js'
+import React from 'react'
 
 
 function ImagesContainer(props){ 
