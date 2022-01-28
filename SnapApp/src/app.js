@@ -7,6 +7,7 @@ import dark from './assets/theme/dark';
 import { ThemeProvider, createGlobalStyle }  from 'styled-components';
 
 import { useState } from 'react';
+import React from 'react';
 
 
 const GlobalStyle = createGlobalStyle`
