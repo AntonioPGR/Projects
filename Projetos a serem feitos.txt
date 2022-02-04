@@ -1,0 +1,54 @@
+Ideias retiradas de: https://github.com/florinpop17/app-ideas
+
+**BookFinder
+exemple: https://github.com/florinpop17/app-ideas/blob/master/Projects/2-Intermediate/Book-Finder-App.md
+
+**DrawApp
+exemple: https://github.com/florinpop17/app-ideas/blob/master/Projects/2-Intermediate/Drawing-App.md
+Obs: estudar Canvas
+
+**Multiply Game
+exemple: https://github.com/florinpop17/app-ideas/blob/master/Projects/2-Intermediate/FlashCards-App.md
+
+**GitHub Profiles
+exemple: https://github-profiles.netlify.app/
+
+**HighStriker
+exemple: https://github.com/florinpop17/app-ideas/blob/master/Projects/2-Intermediate/HighStriker-Game.md
+
+**MarkDown Visualizer
+exemple: https://github.com/florinpop17/app-ideas/blob/master/Projects/2-Intermediate/Markdown-Previewer.md
+
+**
+exemple:
+
+**
+exemple:
+
+**
+exemple:
+
+**
+exemple:
+
+**
+exemple:
+
+**
+exemple:
+
+**
+exemple:
+
+**
+exemple:
+
+**
+exemple:
+
+**
+exemple:
+
+**
+exemple:
+
