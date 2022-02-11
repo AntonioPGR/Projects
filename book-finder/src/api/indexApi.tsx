@@ -1,5 +1,4 @@
-import CompleteInfoBooks from "./booksInterface";
-
+import { CompleteInfoBooks } from "./booksInterface";
 
 /**
  * Search for the book wished
@@ -7,14 +6,18 @@ import CompleteInfoBooks from "./booksInterface";
  * @param name name of the book the user wish to search
  * @param callBack a callback function with what it has to do after make the request
  */
-function searchForBooks(name:string, callBack:Function){
+function searchForBooks(name:string, callBack: (booksArray:CompleteInfoBooks[]) => void ){
+
 
   fecthBooksApi(name)
   .then(res => res.json())
   .then(
     booksList => {
+
       const booksOrganized = organizeBooks(booksList.items);
-      console.log(booksOrganized)
+      
+      callBack(booksOrganized)
+
     }
   )
 
@@ -38,9 +41,10 @@ function fecthBooksApi(query:string){
 
 
 /**
+ * Format the object received from google books api
  * 
- * 
- * 
+ * @param booksArray the google api return object
+ * @return a formated way to the google api find object
  */
 function organizeBooks(booksArray:Array<any>):CompleteInfoBooks[]{
   const orgBooksArray :CompleteInfoBooks[] = []
@@ -61,7 +65,7 @@ function organizeBooks(booksArray:Array<any>):CompleteInfoBooks[]{
       canonicalVolumeLink: bookInfo.canonicalVolumeLink,
       infoLink: bookInfo.infoLink,
 
-      imagesLinks: bookInfo.imagesLinks
+      imageLinks: bookInfo.imageLinks
     })
 
   })

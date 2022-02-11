@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { SearchForm } from "./searchForm";
 import { Books } from './books';
 import { searchForBooks } from '../../api/indexApi'
-import { BooksObject } from "../../interfaces/books";
+import { CompleteInfoBooks } from "../../api/booksInterface";
 
 function Main(){
-  const [books, setBooks] = useState([])
+  const startBooks :CompleteInfoBooks[] = []
+  const [books, setBooks] = useState(startBooks)
 
   /**
    * Make a request to api trying to find books with the parameter passaded
@@ -15,19 +16,20 @@ function Main(){
   function searchBook(bookName:string){
 
     /**
-     * Function to be passad to api as a callBack and be executed after the request
-     */
-    const callBack = (booksObj:any) => {
-
+     * save the books array received in books constant
+    */
+    const saveBooks = (booksArray:CompleteInfoBooks[]) :void => {
+      setBooks(booksArray);
     }
 
-    searchForBooks(bookName, callBack);
+    searchForBooks(bookName, saveBooks);
+
   }
  
   return(
     <main>
       <SearchForm onSubmit={(value:string) => searchBook(value)} />
-      <Books booksObject={books} />
+      <Books books={books} />
     </main>
   )
 }

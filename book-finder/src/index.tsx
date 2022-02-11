@@ -5,6 +5,9 @@ import ReactDOM from "react-dom";
 import { Header } from './components/header/header';
 import { Main } from './components/main/main';
 
+// themes:
+
+
 // Render the body of the page
 function App(){
   return(

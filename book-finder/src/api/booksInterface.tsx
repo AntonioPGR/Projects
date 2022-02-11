@@ -1,4 +1,4 @@
-export default interface CompleteInfoBooks{
+interface CompleteInfoBooks{
   title: string,
   authors: string[],
 
@@ -11,5 +11,12 @@ export default interface CompleteInfoBooks{
   canonicalVolumeLink: string,
   infoLink: string,
 
-  imagesLinks: {}
+  imageLinks: ImageLinks
 }
+
+type ImageLinks = {
+  smallThumbnail: string,
+  thumbnail: string,
+}
+
+export type { CompleteInfoBooks, ImageLinks }

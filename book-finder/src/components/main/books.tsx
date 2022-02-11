@@ -1,21 +1,12 @@
 import React from "react";
+import { CompleteInfoBooks, ImageLinks } from "../../api/booksInterface";
 
-
-
-interface BooksProps{
-  booksObject?: Array<BooksObject> 
+interface Props {
+  books: CompleteInfoBooks[]
 }
 
-type BooksObject = {
-  title: string,
-  imageUrl: string,
-  description?: string,
-  link?: string
-}
-
-
-
-function Books(props:BooksProps){
+function Books(props:Props){
+  const books = props.books;
 
   /**
    * Decide what will show on books container depending of the bookObj passad in props
@@ -23,8 +14,6 @@ function Books(props:BooksProps){
    * @returns content of the books' container 
    */
   function loadBooks(){
-    const books = props.booksObject
-
     if(!books || books.length === 0){
       return <p>Nada a mostrar ainda, que tal pesquisar por alguns livros acima?</p>
     } else {
@@ -41,17 +30,26 @@ function Books(props:BooksProps){
    * 
    * @returns JSX formated with each book information
    */
-  function renderBooks(value:BooksObject, index:number, array?:BooksObject[]){
+  function renderBooks(value:CompleteInfoBooks, index:number, array?:CompleteInfoBooks[]){
 
     /**
      * verify if the image url is correctaly, else return a pre-set image url
      * 
      * @returns url of the image
      */
-    const renderBookCape = (bookCapeUrl:string) :string => {
-      const preSetUrl = '';
+    const renderBookCape = (bookCapeUrl:ImageLinks) :string => {
+      const preSetUrl :string = ''
 
-      return bookCapeUrl? bookCapeUrl : preSetUrl;
+      if(bookCapeUrl.thumbnail){
+        return bookCapeUrl.thumbnail
+
+      }
+      
+      if(bookCapeUrl.smallThumbnail){
+        return bookCapeUrl.smallThumbnail
+      }
+
+      return preSetUrl
     }
 
     return(
@@ -60,12 +58,12 @@ function Books(props:BooksProps){
         <h2> {value.title} </h2>
 
         <div id="imageContainer">
-          <img alt={`Capa do livro ${value.title}`} src={renderBookCape(value.imageUrl)} />
+          <img alt={`Capa do livro ${value.title}`} src={value.imageLinks? renderBookCape(value.imageLinks) : ''} />
         </div>
 
         { value.description? <p>value.description</p> : '' }
 
-        { value.link? <a href={value.link} about="_Blank" >Clique aqui para ver o livro</a> : <p>Link de acesso indisponivel</p> }
+        { value.infoLink? <a href={value.infoLink} target="_blank" referrerPolicy="no-referrer" rel="noopener">Clique aqui para ver o livro</a> : <p>Link de acesso indisponivel</p> }
 
       </article>
     )
