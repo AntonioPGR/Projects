@@ -32,5 +32,6 @@
   },
   "files": [
     "src/assets/themes/themes.d.ts",
+    "src/assets/img/image.d.ts",
   ]
 }

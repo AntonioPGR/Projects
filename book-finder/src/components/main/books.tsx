@@ -1,9 +1,11 @@
 import React from "react";
 import { CompleteInfoBooks, ImageLinks } from "../../api/booksInterface";
-import { BooksDiv, BookItem } from './books-style'
+import { BooksDiv, BookItem, LoadingDiv } from './books-style';
+import DefaultImage from '../../assets/img/defaultImage.png';
 
 interface Props {
-  books: CompleteInfoBooks[]
+  books: CompleteInfoBooks[];
+  loading: boolean;
 }
 
 function Books(props:Props){
@@ -15,11 +17,15 @@ function Books(props:Props){
    * @returns content of the books' container 
    */
   function loadBooks(){
+    if(props.loading){
+      return <LoadingDiv></LoadingDiv>
+    }
+
     if(!books || books.length === 0){
       return <p>Nada a mostrar ainda, que tal pesquisar por alguns livros acima?</p>
-    } else {
-      return books.map((value, index, array) => renderBooks(value, index, array))
     }
+
+    return books.map((value, index, array) => renderBooks(value, index, array))
   }
 
   /**
@@ -56,15 +62,29 @@ function Books(props:Props){
     return(
       <BookItem key={index}>
 
-        <h2> {value.title} </h2>
+        <header>
+          <h2> {value.title.toLowerCase()} </h2>
+        </header>
 
-        <div id="imageContainer">
-          <img alt={`Capa do livro ${value.title}`} src={value.imageLinks? renderBookCape(value.imageLinks) : ''} />
-        </div>
+        <main>
+          <div id="imageContainer">
 
-        { value.description? <p id="description">${value.description}</p> : '' }
+            <img alt={`Capa do livro ${value.title}`} src={value.imageLinks? renderBookCape(value.imageLinks) : DefaultImage} />
 
-        { value.infoLink? <a href={value.infoLink} target="_blank" rel="noreferrer" referrerPolicy="no-referrer" > Clique aqui para ver o livro </a> : <p>Link de acesso indisponivel</p> }
+          </div>
+
+          { value.description? <p id="description">{value.description.substring(0, 150)+"...".toLowerCase()}</p> : '' }
+
+        </main>
+
+        <footer>
+          { 
+          value.infoLink? 
+          <a href={value.infoLink} target="_blank" rel="noreferrer" referrerPolicy="no-referrer" > Clique aqui para ver o livro </a> 
+          : 
+          <p>Link de acesso indisponivel</p> 
+          }
+        </footer>
 
       </BookItem>
     )

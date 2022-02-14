@@ -4,6 +4,7 @@ import { CompleteInfoBooks } from "../../api/booksInterface";
 
 type MainProps = {
   books: CompleteInfoBooks[],
+  loading: boolean
 }
 
 function Main(props:MainProps){
@@ -11,7 +12,7 @@ function Main(props:MainProps){
   return(
     <main>
 
-      <Books books={props.books} />
+      <Books loading={props.loading} books={props.books} />
       
     </main>
   )

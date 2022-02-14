@@ -18,6 +18,7 @@ import { GlobalStyle } from "./index-style";
 // Render the body of the page
 function App(){
   const [ currentTheme ] = useState(LightTheme);
+  const [ isLoading, setIsLoading ] = useState(false)
 
   const startBooks :CompleteInfoBooks[] = []
   const [books, setBooks] = useState(startBooks)
@@ -34,9 +35,11 @@ function App(){
     */
     const saveBooks = (booksArray:CompleteInfoBooks[]) :void => {
       setBooks(booksArray);
+      setIsLoading(false)
     }
 
     searchForBooks(bookName, saveBooks);
+    setIsLoading(true)
 
   }
   
@@ -47,7 +50,7 @@ function App(){
 
           <Header onSubmit={(name:string) => searchBook(name)} />
         
-          <Main books={books} />
+          <Main loading={isLoading} books={books} />
 
       </ThemeProvider>
     </div>

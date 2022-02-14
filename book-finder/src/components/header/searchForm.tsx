@@ -1,4 +1,5 @@
 import React, { FormEvent, useRef, useState } from "react";
+import { SearchInput, SearchButton } from './searchForm-style'
 
 interface SearchFormProps {
   onSubmit: ( bookName:string ) => void,
@@ -49,8 +50,8 @@ function SearchForm(props : SearchFormProps){
 
         <div id="searchBar">
           
-          <input ref={searchInput} type="text" placeholder="Searching for something...?" maxLength={50} autoComplete="off" required />
-          <button>Search 🔎</button>
+          <SearchInput ref={searchInput} type="text" placeholder="Searching for something...?" maxLength={50} autoComplete="off" required />
+          <SearchButton>Search 🔎</SearchButton>
 
         </div>
 

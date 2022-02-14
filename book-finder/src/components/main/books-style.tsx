@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const BooksDiv = styled.div`
-  max-width: 700px;
+  max-width: 1000px;
   margin: auto;
   padding: 10px;
 
@@ -22,18 +22,54 @@ const BookItem = styled.article`
   margin: 15px auto;
   padding: 10px;
 
+  overflow: hidden;
+
   *{
     padding: 5px 0;
   }
 
-  h2{
-
+  header h2{
+    font-size: 1.5rem;
+    font-family: ${props => props.theme.fonts.titles};
+    text-transform: capitalize;
   }
 
-  p#description{
-    overflow: hidden;
-    text-align: justify;
+  main {
+    div#imageContainer{
+      height: 200px;
+
+      img{
+        height: 200px;
+        width: auto;
+      }
+    }
+    p{
+      text-align: justify;
+    }
+  }
+
+`
+
+const loadingAnimation = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 `
 
-export { BooksDiv, BookItem }
+const LoadingDiv = styled.div`
+  margin: auto;
+  height: 100px;
+  width: 100px;
+
+  border-radius: 50%;
+  border: 3px solid ${props => props.theme.colors.secundary};
+  border-top-color: ${props => props.theme.colors.primary};
+
+  animation: ${loadingAnimation} 1s linear infinite;
+`
+
+export { BooksDiv, BookItem, LoadingDiv }
