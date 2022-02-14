@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { Books } from './books';
-import { searchForBooks } from '../../api/indexApi'
 import { CompleteInfoBooks } from "../../api/booksInterface";
 
 type MainProps = {

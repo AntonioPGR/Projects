@@ -17,7 +17,7 @@ import { GlobalStyle } from "./index-style";
 
 // Render the body of the page
 function App(){
-  const [ currentTheme, setCurrentTheme ] = useState(LightTheme);
+  const [ currentTheme ] = useState(LightTheme);
 
   const startBooks :CompleteInfoBooks[] = []
   const [books, setBooks] = useState(startBooks)
