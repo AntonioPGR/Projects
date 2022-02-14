@@ -68,7 +68,7 @@ function organizeBooks(booksArray:Array<any>):CompleteInfoBooks[]{
       imageLinks: bookInfo.imageLinks
     })
 
-    return
+    return '';
   })
 
   return orgBooksArray
