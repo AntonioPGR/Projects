@@ -43,16 +43,22 @@ function SearchForm(props : SearchFormProps){
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
 
-      <div id="searchBar">
-        <input ref={searchInput} type="text" placeholder="Searching for something...?" maxLength={50} autoComplete="off" required />
-        <button>Search 🔎</button>
-      </div>
+      <form onSubmit={handleSubmit}>
+
+        <div id="searchBar">
+          
+          <input ref={searchInput} type="text" placeholder="Searching for something...?" maxLength={50} autoComplete="off" required />
+          <button>Search 🔎</button>
+
+        </div>
+
+      </form>
 
       {loadFormError()}
 
-    </form>
+    </div>
   )
 }
 

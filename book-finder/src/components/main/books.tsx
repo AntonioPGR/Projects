@@ -1,5 +1,6 @@
 import React from "react";
 import { CompleteInfoBooks, ImageLinks } from "../../api/booksInterface";
+import { BooksDiv, BookItem } from './books-style'
 
 interface Props {
   books: CompleteInfoBooks[]
@@ -53,7 +54,7 @@ function Books(props:Props){
     }
 
     return(
-      <article key={index}>
+      <BookItem key={index}>
 
         <h2> {value.title} </h2>
 
@@ -61,18 +62,18 @@ function Books(props:Props){
           <img alt={`Capa do livro ${value.title}`} src={value.imageLinks? renderBookCape(value.imageLinks) : ''} />
         </div>
 
-        { value.description? <p>value.description</p> : '' }
+        { value.description? <p id="description">${value.description}</p> : '' }
 
         { value.infoLink? <a href={value.infoLink} target="_blank" referrerPolicy="no-referrer" rel="noopener">Clique aqui para ver o livro</a> : <p>Link de acesso indisponivel</p> }
 
-      </article>
+      </BookItem>
     )
   }
 
   return (
-    <div>
+    <BooksDiv>
       {loadBooks()}
-    </div>
+    </BooksDiv>
   )
 }
 

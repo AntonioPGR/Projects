@@ -1,11 +1,25 @@
 import React from "react";
+import { HeaderContainer, TitleContainer, SubTitle, Title } from "./header-style";
+import { SearchForm } from "./searchForm";
 
-export default function Header(){
+type HeaderProps = {
+  onSubmit: (name : string) => void,
+}
+
+export default function Header(props:HeaderProps){
   return(
-    <header>
-      <h1>BookFinder</h1>
-      <p>All your books in one place</p>
-    </header>
+    <HeaderContainer>
+
+      <TitleContainer>
+
+        <Title>BookFinder</Title>
+        <SubTitle>All your books in one place</SubTitle>
+
+      </TitleContainer>
+
+      <SearchForm onSubmit={(name:string) => props.onSubmit(name)} />
+      
+    </HeaderContainer>
   )
 }
 

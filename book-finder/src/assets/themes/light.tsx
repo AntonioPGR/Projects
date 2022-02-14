@@ -1,17 +1,24 @@
-import Theme from "../../interfaces/themes";
+import { DefaultTheme } from "styled-components";
 
-const LightTheme : Theme = {
+const LightTheme : DefaultTheme = {
   themeName: 'light',
+
   colors: {
-    primary: '',
-    secundary: '',
-    text: '#000',
-    background: '#e6e6e6'
+    primary: '#6290C3',
+    secundary: '#BAFF29',
+    third: '#b7f7e9c3',
+    text: '#1A1B41',
+    background: '#C2E7DA',
+    background2: '#c6fff1c3',
   },
+
   fonts: {
-    titles: '',
-    paragrafhs: '',
-    emphasis: '',
+    titles: 'Arial, Helvetica, sans-serif',
+    paragrafhs: 'Times',
+  },
+
+  sizes: {
+    defaultSize: '16px',
   }
 }
 

@@ -4,5 +4,3 @@ interface BooksObject {
   description?: string,
   link?: string
 }
-
-export type { BooksObject }

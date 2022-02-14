@@ -29,5 +29,8 @@
         "extensions": [".js",".jsx",".ts",".tsx"]
       }
     }
-  }
+  },
+  "files": [
+    "src/assets/themes/themes.d.ts",
+  ]
 }
