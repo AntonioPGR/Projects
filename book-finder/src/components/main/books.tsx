@@ -64,7 +64,7 @@ function Books(props:Props){
 
         { value.description? <p id="description">${value.description}</p> : '' }
 
-        { value.infoLink? <a href={value.infoLink} target="_blank" referrerPolicy="no-referrer" rel="noopener">Clique aqui para ver o livro</a> : <p>Link de acesso indisponivel</p> }
+        { value.infoLink? <a href={value.infoLink} target="_blank" rel="noreferrer" referrerPolicy="no-referrer" > Clique aqui para ver o livro </a> : <p>Link de acesso indisponivel</p> }
 
       </BookItem>
     )
