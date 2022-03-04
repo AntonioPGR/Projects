@@ -5,7 +5,7 @@ export class SnakeGame{
   private _player : Player;
   private _apple : Apple;
 
-  constructor( ){
+  constructor(){
 
     const startPlayer = new Player();
     this._player = startPlayer;
