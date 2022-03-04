@@ -1,8 +1,9 @@
 import React from "react"
+import { BottomBarDiv } from "../assets/css/BarStyle"
 
 export function Footer(){
   return(
-    <p>
+    <BottomBarDiv>
       Created By
       <a 
         href="https://www.github.com/AntonioPGR"
@@ -11,6 +12,6 @@ export function Footer(){
       >
         Antonio Pacheco
       </a>
-    </p>
+    </BottomBarDiv>
   )
 }

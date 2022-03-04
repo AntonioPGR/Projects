@@ -2,21 +2,32 @@ import React from "react";
 
 import { SideBar } from './bodyComponents/sideBar';
 import { InfoDisplay } from './bodyComponents/infoDisplay';
-import { BottomMusicBar } from './bodyComponents/bottomMusicBar';
 import { SearchBar } from './bodyComponents/searchBar';
 
+import { AppBody } from '../assets/css/bodyStyle'
+import { searchForMusic } from "../api/searchMusic";
+
 export function Body(){
+
+  const searchQuery = async (searchQuery:string) => {
+    const query = searchQuery;
+
+    // searchForMusic(query)
+    // .then(res => console.log(res))
+
+    console.log('fecth')
+  }
+
+
   return(
-    <div>
+    <AppBody>
 
       <SideBar />
 
-      <SearchBar />
+      <SearchBar onSubmit={searchQuery} />
 
       <InfoDisplay />
 
-      <BottomMusicBar />
-
-    </div>
+    </AppBody>
   )
 }
