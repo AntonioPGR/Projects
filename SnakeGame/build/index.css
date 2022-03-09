@@ -1,0 +1,17 @@
+body{
+  background-color: #c2ffc7;
+}
+
+div#pageContainer{
+  text-align: center;
+}
+
+h1{
+  color: #124d03;
+}
+
+canvas{
+  background-color: #c2ffc7;
+  border: 1px solid rgb(146, 146, 146);
+  border-radius: 5px;
+}
