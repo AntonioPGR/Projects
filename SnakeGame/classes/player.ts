@@ -1,64 +1,34 @@
-import { PlayerPosition, PlayerSkin, PlayerInfo, TableBorders, PlayerSize, PlayerSpeed } from "../types/player";
+import { PlayerInfo } from "../types/interfaces";
+import { Position, MaxPosition, Size, Speed, Skin } from '../types/types'
+import { GameObjects } from "./gameObject";
 
-export class Player{
+export class Player extends GameObjects{
 
-  private position : PlayerPosition;
-  private playerSize : PlayerSize;
-  private speed : PlayerSpeed;
-  private skin : PlayerSkin;
-  private tableBorders : TableBorders;
+  private _speed : Speed;
   
   /** 
-   * @param startPosition posição inicial o player no canvas
-   * @param playerSize comprimento e altura inicial do player
-   * @param speed velocidade padrão do jogador
-   * @param skin cor do player e se desejar a url de uma imagem para ser mostrada no local da cor
-   * 
-   * @returns A player
+   * @param startInfo um objeto contento as informações do jogador
   */
-  constructor(startPosition:PlayerPosition, playerSize:PlayerSize, speed:PlayerSpeed, skin:PlayerSkin){
+  constructor(startInfo:PlayerInfo){
+    const playerStartInfo = startInfo
 
-    this.position = startPosition;
-    this.playerSize = playerSize;
-    this.speed = speed;
-    this.skin = skin;
+    super({
+      maxPosition: playerStartInfo.maxPosition,
+      position: playerStartInfo.position,
+      size: playerStartInfo.size,
+      skin:  playerStartInfo.skin
+    })
+
+    this._speed = playerStartInfo.speed;
 
   }
 
   // get and set methods
-  public getPlayerSize(): PlayerSize {
-      return this.playerSize;
+  public getSpeed(): Speed {
+      return this._speed;
   }
-  public setPlayerSize(size: PlayerSize): void {
-      this.playerSize = size;
-  }
-
-  public getSpeed(): PlayerSpeed {
-      return this.speed;
-  }
-  public setSpeed(speed: PlayerSpeed): void {
-      this.speed = speed;
-  }
-
-  public getSkin(): PlayerSkin {
-    return this.skin;
-  }
-  public setSkin(skin: PlayerSkin): void {
-    this.skin = skin;
-  }
-
-  public getTableBorders(): TableBorders {
-    return this.tableBorders;
-  }
-  public setTableBorders(tableBorders: TableBorders): void {
-    this.tableBorders = tableBorders;
-  }
-
-  public getPosition(): PlayerPosition {
-    return this.position;
-  }
-  public setPosition(position: PlayerPosition): void {
-    this.position = position;
+  public setSpeed(speed: Speed): void {
+      this._speed = speed;
   }
 
 }

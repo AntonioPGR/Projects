@@ -1,0 +1,15 @@
+{
+  "name": "snakegame",
+  "version": "1.0.0",
+  "description": "A simple snake game app",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AntonioPGR/projects/SnakeGame"
+  },
+  "author": "Antonio Pacheco Gerim Ribeiro",
+  "license": "MIT"
+}
