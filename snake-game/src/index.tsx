@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { Game } from "./game";
+import { Game } from "./components/game";
 import { StyledMainContainer, PageTitle, GlobalStyle } from './style/style'
 
 const App = () => {

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { GameCanvasContainer } from "./style/style"
+import { GameCanvasContainer } from "../style/style"
 
 export function Game(){
   const canvasRef = useRef<HTMLCanvasElement>(null)
