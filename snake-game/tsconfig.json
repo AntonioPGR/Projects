@@ -22,6 +22,7 @@
   },
   "include": [
     "src",
-    "./src/utils/types.d.ts"
-  ]
+    "src/typescript/types.d.ts"
+  ],
+  "skipLibCheck": true
 }

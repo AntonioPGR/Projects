@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { Game } from "./components/game";
+import { GameContainer } from "./components/gameContainer";
 import { StyledMainContainer, PageTitle, GlobalStyle } from './style/style'
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
 
       <Title> Snake Game </Title>
 
-      <Game />
+      <GameContainer />
 
 
     </StyledMain>
