@@ -4,7 +4,7 @@
 declare class GameObjectClass{
 
   //Class Variables;
-  _position: ObjectPosition[];
+  _position: ObjectPosition;
   _size: ObjectSize;
   _skin: ObjectSkin;
   
@@ -12,14 +12,14 @@ declare class GameObjectClass{
   constructor(gameInfo:GameInformation) : void;
 
   // Getter And Setters;
-  public getObjectPosition(): ObjectPosition[]
-  public setObjectPosition(newObjectPosition: ObjectPosition[]): void
+  public getPosition(): ObjectPosition;
+  public setPosition(newObjectPosition: ObjectPosition): void
 
-  public getObjectSize(): ObjectSize
-  public setObjectSize(newObjectSize:ObjectSize): void 
+  public getSize(): ObjectSize
+  public setSize(newObjectSize:ObjectSize): void 
 
-  public getObjectSkin(): ObjectSkin
-  public setObjectSkin(newObjectSkin: ObjectSkin): void
+  public getSkin(): ObjectSkin
+  public setSkin(newObjectSkin: ObjectSkin): void
   
 }
 

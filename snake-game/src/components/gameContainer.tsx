@@ -5,9 +5,10 @@ import { GameCanvasContainer } from "../style/style"
 export function GameContainer(){
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  const game = canvasRef && canvasRef.current? createGame(canvasRef.current) : '';
-
-  const GameCanvas = GameCanvasContainer;
+  if(canvasRef.current){
+    console.log('game function called')
+    createGame(canvasRef.current)
+  }
 
   return(
     <GameCanvasContainer ref={canvasRef}>

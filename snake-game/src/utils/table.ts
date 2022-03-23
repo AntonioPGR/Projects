@@ -1,3 +1,6 @@
+import { TableClass } from "../typescript/table";
+import gameObject from "./gameObject";
+
 export default class Table implements TableClass{
 
   _table: HTMLCanvasElement;
@@ -10,6 +13,9 @@ export default class Table implements TableClass{
 
   }
 
+  /**
+   * @returns the size of the canvas 
+   */
   public getTableSize(): ObjectSize {
     const table = this.getTable();
     const ctx = this.getContext();
@@ -26,6 +32,41 @@ export default class Table implements TableClass{
 
   }
 
+  /**
+   * Clean the canvas for redraw
+   */
+  public clean() : void{
+
+    const ctx = this.getContext();
+    const canvasSize = this.getTableSize()
+
+    ctx.clearRect(0, 0, canvasSize.width, canvasSize.height)
+
+  }
+
+  /**
+   * Draws an gameObject in the game table
+   */
+  public draw(object: gameObject): void {
+    const obj = object;
+    const ctx = this.getContext();
+    
+    ctx.fillStyle = obj.getSkin().color
+
+    const position = obj.getPosition();
+    const size = obj.getSize();
+    const finalPostiton : ObjectFinalPosition = {
+      xStart: position.x,
+      xEnd: position.x + size.width,
+      yStart: position.y,
+      yEnd: position.y + size.height
+    }
+    console.log(finalPostiton);
+    ctx.fillRect(finalPostiton.xStart, finalPostiton.yStart, finalPostiton.xEnd, finalPostiton.yEnd)
+
+  }
+
+  // ---------- GETTERS AND SETTERS ----------
   public getContext(): CanvasRenderingContext2D {
     return this._ctx;
   }

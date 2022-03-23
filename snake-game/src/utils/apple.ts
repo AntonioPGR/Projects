@@ -6,7 +6,7 @@ export default class Apple extends GameObject implements AppleClass{
 
   constructor(appleInfo:AppleInformation){
 
-    const gameInfo : GameInformation = {
+    const gameInfo : GameObjectsInformation = {
       size: appleInfo.size,
       skin: appleInfo.skin,
       position: appleInfo.position
