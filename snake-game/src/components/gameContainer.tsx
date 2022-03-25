@@ -6,18 +6,21 @@ export function GameContainer(){
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   if(canvasRef.current){
-    console.log('game function called')
     createGame(canvasRef.current)
   }
 
   return(
-    <GameCanvasContainer ref={canvasRef}>
+    <div>
 
-      <p>
-        Your browser can't load the game, please update it and retry!
-      </p>
+      <GameCanvasContainer ref={canvasRef}>
+        <p>
+          Your browser can't load the game, please update it and retry!
+        </p>
+      </GameCanvasContainer>
 
-    </GameCanvasContainer>
+      <button onClick={() => { if(canvasRef.current){createGame(canvasRef.current)}} } >Restart</button>
+
+    </div>
   )
 
 }

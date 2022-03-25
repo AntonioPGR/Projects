@@ -20,6 +20,7 @@ const App = () => {
       <GameContainer />
 
 
+
     </StyledMain>
   )
 }

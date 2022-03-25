@@ -1,3 +1,4 @@
+import { table } from "console";
 import { GameClass } from "../typescript/game";
 import Apple from "./apple";
 import Player from "./player";
@@ -8,15 +9,22 @@ export default class Game implements GameClass{
   _player: Player;
   _apple: Apple;
   _table: Table;
+  _loop: NodeJS.Timer | undefined;
+  _tickSpeed: number;
+  _score:number;
 
   constructor(gameInfo:GameInformation){
     
     this._apple = gameInfo.apple;
     this._player = gameInfo.player;
     this._table = gameInfo.table;
-
+    this._tickSpeed = gameInfo.tickStartSpeed;
+    this._score = gameInfo.score
+    this._loop = undefined;
+    
     // make the first update of the table
     this.loadTable();
+    this.createLoop();
 
   }
 
@@ -29,14 +37,47 @@ export default class Game implements GameClass{
     
     table.clean()
 
-    table.draw(this.getApple())
-
+    const apple = this.getApple()
+    table.draw(apple)
+    
     // drawing the player
+    const player = this.getPlayer()
     this.getPlayer().getBodyPieces().forEach(piece => {
       table.draw(piece);
     });
 
   }
+
+  /**
+   * defines what the game does each tick
+   */
+  update():void{
+
+    //Move the player
+    const player = this.getPlayer();
+    this.getPlayer().update();
+
+    //Update table
+    this.loadTable();
+
+  }
+  
+  /**
+   * creates the game loop
+   */
+  createLoop(): NodeJS.Timer {
+
+    const tick = this.getTickSpeed();
+    this._loop = setInterval(() => {
+
+      this.update();
+
+    }, tick);
+    
+    return this._loop;
+
+  }
+
 
   // ---------- GETTERS AND SETTERS ----------
   public getApple(): Apple {
@@ -56,6 +97,24 @@ export default class Game implements GameClass{
   }
   public setTable(Table: Table): void {
     this._table = Table
+  }
+  public getTickSpeed(): number {
+    return this._tickSpeed;
+  }
+  public setTickSpeed(tickSpeed: number): void {
+    this._tickSpeed = tickSpeed;
+  }
+  public getLoop(): NodeJS.Timer | undefined {
+    return this._loop;
+  }
+  public setLoop(loop: NodeJS.Timer): void {
+    this._loop = loop;
+  }
+  public getScore(): number {
+    return this._score;
+  }
+  public setScore(score: number): void {
+    this._score = score;
   }
 
 }

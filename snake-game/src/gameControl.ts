@@ -7,6 +7,7 @@ import GameObject from "./utils/gameObject";
 export function controlGame(gamesCanvas:HTMLCanvasElement){
 
   const game = createGame(gamesCanvas);
+  game.createLoop();
 
 }
 
@@ -15,14 +16,14 @@ export function controlGame(gamesCanvas:HTMLCanvasElement){
  * @param gameCanvas canvas onde o jogo será exibido
  * @returns classe de controle do jogo
  */
-export function createGame(gameCanvas:HTMLCanvasElement) : Game | void{
+export function createGame(gameCanvas:HTMLCanvasElement) : Game{
 
   // ---------- CANVAS RENDERING ----------
   const canvas = gameCanvas;
   const ctx = gameCanvas.getContext('2d');
   if(!ctx){ 
     console.log('not canvas yet');
-    return;
+    throw new Error('not canvas yet');
   }
 
   // ---------- GAME OBJECTS CREATION ----------
@@ -34,7 +35,9 @@ export function createGame(gameCanvas:HTMLCanvasElement) : Game | void{
   const gameInfo : GameInformation = {
     apple: apple,
     player: player,
-    table: table
+    table: table,
+    tickStartSpeed: 1000,
+    score: 0,
   }
   const game = new Game(gameInfo);
   
@@ -44,8 +47,8 @@ export function createGame(gameCanvas:HTMLCanvasElement) : Game | void{
 
 // ---------- GAMEOBJECTS INFO CREATION ----------
 const objectSize : ObjectSize = {
-  height: 20,
-  width: 20
+  height: 10,
+  width: 10
 }
 
 // ---------- PLAYER CREATION ----------
@@ -65,9 +68,22 @@ function createPlayer(table : Table) : Player {
     skin: skin,
   });
 
+  const startPosition2 : ObjectPosition = {
+    x: table.getTableSize().width / 2,
+    y: table.getTableSize().height / 2
+  }
+
+  const playerDirection : Direction = {
+    UP: false,
+    DOWN: false,
+    LEFT: true,
+    RIGHT: false,
+  }
+
   const playerInfo : PlayerInformation = {
     bodyPieces: [firstPlayer],
-    speed: 1,
+    speed: 10,
+    direction: playerDirection
   }
 
   const player = new Player(playerInfo);
@@ -77,10 +93,10 @@ function createPlayer(table : Table) : Player {
 
 //---------- APPLE CREATION ----------
 function createApple(table : Table) : Apple {
-  const maxApplePosition : MaxPosition = {
-    maxX: table.getTableSize().width,
+  const maxPos: MaxPosition = {
+    maxX: table.getTableSize().width - objectSize.width,
     minX: 0,
-    maxY: table.getTableSize().height,
+    maxY: table.getTableSize().height - objectSize.height,
     minY: 0,
   };
   
@@ -88,9 +104,8 @@ function createApple(table : Table) : Apple {
     color: "#ff0000"
   }
   
-  const maxPos = table.getTableSize()
-  const randomX = Math.floor(Math.random() * (maxPos.width - 0) ) + 0;
-  const randomY = Math.floor(Math.random() * (maxPos.height - 0)) + 0;
+  const randomX = Math.floor(Math.random() * (maxPos.maxX - maxPos.minX) ) + maxPos.minX;
+  const randomY = Math.floor(Math.random() * (maxPos.maxY - maxPos.minY)) + maxPos.minY;
   const startRandomPosition : ObjectPosition = {
     x: randomX,
     y: randomY
@@ -98,7 +113,7 @@ function createApple(table : Table) : Apple {
   
   const appleInfo : AppleInformation = {
     position: startRandomPosition,
-    maxPosition: maxApplePosition,
+    maxPosition: maxPos,
     size: objectSize,
     skin: appleSkin,
   }

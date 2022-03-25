@@ -57,15 +57,16 @@ export default class Table implements TableClass{
     const size = obj.getSize();
     const finalPostiton : ObjectFinalPosition = {
       xStart: position.x,
-      xEnd: position.x + size.width,
+      xEnd: size.width,
       yStart: position.y,
-      yEnd: position.y + size.height
+      yEnd: size.height
     }
-    console.log(finalPostiton);
     ctx.fillRect(finalPostiton.xStart, finalPostiton.yStart, finalPostiton.xEnd, finalPostiton.yEnd)
 
   }
 
+
+  
   // ---------- GETTERS AND SETTERS ----------
   public getContext(): CanvasRenderingContext2D {
     return this._ctx;

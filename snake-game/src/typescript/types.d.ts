@@ -31,6 +31,12 @@ declare global{
   
   // PLAYER TYPES: -------------------------------------------------
   declare type Speed = number;
+  declare type Direction = {
+    UP: boolean,
+    DOWN: boolean,
+    LEFT: boolean,
+    RIGHT: boolean
+  };
   
   // APPLE TYPES: -------------------------------------------------
   declare type MaxPosition = {
@@ -50,8 +56,9 @@ declare global{
   }
   
   declare interface PlayerInformation{
-    bodyPieces: [GameObjects]
-    speed: Speed;
+    bodyPieces: GameObject[],
+    speed: Speed,
+    direction: Direction
   }
   
   declare interface AppleInformation extends GameObjectsInformation{
@@ -61,7 +68,9 @@ declare global{
   declare interface GameInformation{
     player: Player,
     apple: Apple,
-    table: Table
+    table: Table,
+    tickStartSpeed: number,
+    score: number
   }
 
 }
