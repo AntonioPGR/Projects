@@ -13,6 +13,8 @@ let game : Game;
  */
 export function controlGame(gamesCanvas:HTMLCanvasElement){
 
+  console.log(game)
+
   if(!game){
 
     game = createGame(gamesCanvas);
@@ -64,7 +66,7 @@ const objectSize : ObjectSize = {
   width: 10
 }
 
-// ---------- PLAYER CREATION ----------
+// PLAYER CREATION 
 /**
  * Cria o jogador do jogo
  * @param table tabuleiro onde o player será exibido
@@ -76,6 +78,13 @@ function createPlayer(table : Table) : Player {
     y: table.getTableSize().height / 2
   }
 
+  const maxPos: MaxPosition = {
+    maxX: table.getTableSize().width - objectSize.width,
+    minX: 0,
+    maxY: table.getTableSize().height - objectSize.height,
+    minY: 0,
+  };
+
   const skin : ObjectSkin = {
     color: '#51C81D',
   }
@@ -84,6 +93,7 @@ function createPlayer(table : Table) : Player {
     position: startPosition,
     size: objectSize,
     skin: skin,
+    maxPosition: maxPos,
   });
 
   const startPosition2 : ObjectPosition = {
@@ -109,7 +119,7 @@ function createPlayer(table : Table) : Player {
   return player;
 }
 
-//---------- APPLE CREATION ----------
+// APPLE CREATION
 /**
  * Cria a maçã do jogo
  * @param table tabuleiro onde o apple será exibido

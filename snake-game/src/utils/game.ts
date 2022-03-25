@@ -90,6 +90,10 @@ export default class Game implements GameClass{
 
   }
 
+  changeDirection(direction: string): void {
+    
+  }
+
 
   // ---------- GETTERS AND SETTERS ----------
   public getApple(): Apple {

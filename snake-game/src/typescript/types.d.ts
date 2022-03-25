@@ -53,6 +53,7 @@ declare global{
     position: ObjectPosition,
     size: ObjectSize,
     skin: ObjectSkin,
+    maxPosition: MaxPosition,
   }
   
   declare interface PlayerInformation{
@@ -62,7 +63,7 @@ declare global{
   }
   
   declare interface AppleInformation extends GameObjectsInformation{
-    maxPosition: MaxPosition,
+    
   }
   
   declare interface GameInformation{
