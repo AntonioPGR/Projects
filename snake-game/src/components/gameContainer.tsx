@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
-import { createGame } from "../gameControl";
+import { controlGame } from "../gameControl";
 import { GameCanvasContainer } from "../style/style"
 
 export function GameContainer(){
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   if(canvasRef.current){
-    createGame(canvasRef.current)
+    controlGame(canvasRef.current)
   }
 
   return(
@@ -18,7 +18,7 @@ export function GameContainer(){
         </p>
       </GameCanvasContainer>
 
-      <button onClick={() => { if(canvasRef.current){createGame(canvasRef.current)}} } >Restart</button>
+      <button onClick={() => { if(canvasRef.current){controlGame(canvasRef.current)}} } >Restart</button>
 
     </div>
   )

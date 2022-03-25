@@ -6,8 +6,8 @@ import GameObject from "../utils/gameObject";
 declare global{
   declare class PlayerClass{
   
-    _speed: Speed;
     _bodyPieces: GameObject[];
+    _direction: Direction;
   
     // Class Functions:
     constructor(playerInfo:PlayerInformation) : void;
@@ -16,8 +16,6 @@ declare global{
     public move(object:GameObject) : void;
   
     // ---------- GETTERS AND SETTERS ----------
-    public getSpeed() : Speed
-    public setSpeed(Speed : Speed): void 
     public getBodyPieces(): GameObject[]
     public setBodyPieces(bodyPieces: GameObject[]): void
     public getDirection(): Direction

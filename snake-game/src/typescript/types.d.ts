@@ -70,7 +70,8 @@ declare global{
     apple: Apple,
     table: Table,
     tickStartSpeed: number,
-    score: number
+    score: number,
+    startSpeed: number,
   }
 
 }

@@ -11,7 +11,9 @@ export default class Game implements GameClass{
   _table: Table;
   _loop: NodeJS.Timer | undefined;
   _tickSpeed: number;
+  _tickStartSpeed: number;
   _score:number;
+  _speed: number;
 
   constructor(gameInfo:GameInformation){
     
@@ -19,12 +21,13 @@ export default class Game implements GameClass{
     this._player = gameInfo.player;
     this._table = gameInfo.table;
     this._tickSpeed = gameInfo.tickStartSpeed;
-    this._score = gameInfo.score
+    this._tickStartSpeed = gameInfo.tickStartSpeed;
+    this._score = 0;
     this._loop = undefined;
+    this._speed = gameInfo.startSpeed;
     
     // make the first update of the table
     this.loadTable();
-    this.createLoop();
 
   }
 
@@ -47,34 +50,47 @@ export default class Game implements GameClass{
     });
 
   }
-
-  /**
-   * defines what the game does each tick
-   */
-  update():void{
-
-    //Move the player
-    const player = this.getPlayer();
-    this.getPlayer().update();
-
-    //Update table
-    this.loadTable();
-
-  }
   
   /**
    * creates the game loop
    */
-  createLoop(): NodeJS.Timer {
+  createLoop(){
+    // reseta o looping
+    this.setLoop(undefined);
+    console.log(this.getTickSpeed());
 
     const tick = this.getTickSpeed();
-    this._loop = setInterval(() => {
+    this.setLoop(setInterval(() => {
 
       this.update();
 
-    }, tick);
+    }, tick));
+
+
+  }
+
+  /**
+   * defines what the game does each tick
+   */
+   update():void{
+
+    //Move the player
+    const player = this.getPlayer();
+    player.update();
+
+    //increase the speed time of tick
+    const speed = this.getSpeed();
+    const score = this.getScore();
+    const tickSpeed = this.getTickSpeed();
+    const startTickSpeed = this.getStartTickSpeed();
+
+    console.log(speed, score, tickSpeed, startTickSpeed);
+    console.log( tickSpeed + ( score + speed ) * 100 );
     
-    return this._loop;
+    this.setSpeed(speed + 1);
+
+    //Update table
+    this.loadTable();
 
   }
 
@@ -102,12 +118,26 @@ export default class Game implements GameClass{
     return this._tickSpeed;
   }
   public setTickSpeed(tickSpeed: number): void {
+
     this._tickSpeed = tickSpeed;
+
+    this.createLoop();
+
+  }
+  public getStartTickSpeed(): number {
+    return this._tickStartSpeed;
+  }
+  public setStartTickSpeed(tickStartSpeed: number): void {
+
+    this._tickStartSpeed = tickStartSpeed;
+
+    this.createLoop();
+
   }
   public getLoop(): NodeJS.Timer | undefined {
     return this._loop;
   }
-  public setLoop(loop: NodeJS.Timer): void {
+  public setLoop(loop: NodeJS.Timer | undefined): void {
     this._loop = loop;
   }
   public getScore(): number {
@@ -115,6 +145,12 @@ export default class Game implements GameClass{
   }
   public setScore(score: number): void {
     this._score = score;
+  }
+  public getSpeed(): number {
+    return this._speed;
+  }
+  public setSpeed(speed: number): void {
+    this._score = speed;
   }
 
 }

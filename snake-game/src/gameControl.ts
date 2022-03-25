@@ -4,10 +4,21 @@ import Game from "./utils/game";
 import Table from "./utils/table";
 import GameObject from "./utils/gameObject";
 
+//Jogo inicializado
+let game : Game;
+
+/**
+ * Create and control the phases of the game
+ * @param gamesCanvas canvas onde o jogo será exibido
+ */
 export function controlGame(gamesCanvas:HTMLCanvasElement){
 
-  const game = createGame(gamesCanvas);
-  game.createLoop();
+  if(!game){
+
+    game = createGame(gamesCanvas);
+    game.createLoop();
+    
+  }
 
 }
 
@@ -16,7 +27,7 @@ export function controlGame(gamesCanvas:HTMLCanvasElement){
  * @param gameCanvas canvas onde o jogo será exibido
  * @returns classe de controle do jogo
  */
-export function createGame(gameCanvas:HTMLCanvasElement) : Game{
+function createGame(gameCanvas:HTMLCanvasElement) : Game{
 
   // ---------- CANVAS RENDERING ----------
   const canvas = gameCanvas;
@@ -38,6 +49,7 @@ export function createGame(gameCanvas:HTMLCanvasElement) : Game{
     table: table,
     tickStartSpeed: 1000,
     score: 0,
+    startSpeed: 1,
   }
   const game = new Game(gameInfo);
   
@@ -46,12 +58,18 @@ export function createGame(gameCanvas:HTMLCanvasElement) : Game{
 }
 
 // ---------- GAMEOBJECTS INFO CREATION ----------
+// informações de tamanho do jogador e da maçã
 const objectSize : ObjectSize = {
   height: 10,
   width: 10
 }
 
 // ---------- PLAYER CREATION ----------
+/**
+ * Cria o jogador do jogo
+ * @param table tabuleiro onde o player será exibido
+ * @returns player
+ */
 function createPlayer(table : Table) : Player {
   const startPosition : ObjectPosition = {
     x: table.getTableSize().width / 2,
@@ -92,6 +110,11 @@ function createPlayer(table : Table) : Player {
 }
 
 //---------- APPLE CREATION ----------
+/**
+ * Cria a maçã do jogo
+ * @param table tabuleiro onde o apple será exibido
+ * @returns apple
+ */
 function createApple(table : Table) : Apple {
   const maxPos: MaxPosition = {
     maxX: table.getTableSize().width - objectSize.width,

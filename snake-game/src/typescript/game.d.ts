@@ -9,26 +9,30 @@ declare class GameClass {
   _table: Table;
   _loop: NodeJS.Timer |undefined;
   _tickSpeed: number;
+  _tickStartSpeed: number;
   _score: number;
+  _speed: number;
 
   constructor(gameInfo : GameInformation) :void;
 
   loadTable() : void;
   update() : void;
-  createLoop() : NodeJS.Timer;
+  createLoop() : void;
 
   // ---------- GETTERS AND SETTERS ----------
   public getPlayer(): Player;
-  public setPlayer(Player: Player): void;
+  public setPlayer(player: Player): void;
   public getApple(): Apple;
-  public setApple(Apple: Apple): void;
+  public setApple(apple: Apple): void;
   public getTable(): Table;
-  public setTable(Table: Table): void;
+  public setTable(table: Table): void;
   public getLoop(): NodeJS.Timer | undefined;
-  public setLoop(Table: NodeJS.Timer): void; 
+  public setLoop(loop: NodeJS.Timer): void; 
   public getTickSpeed(): number;
-  public setTickSpeed(Table: number): void; 
+  public setTickSpeed(tickSpeed: number): void; 
   public getScore(): number;
-  public setScore(Table: number): void; 
+  public setScore(score : number): void; 
+  public getSpeed(): number;
+  public setSpeed(speed : number): void;
 
 }
