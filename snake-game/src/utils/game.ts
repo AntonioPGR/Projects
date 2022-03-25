@@ -1,4 +1,3 @@
-import { table } from "console";
 import { GameClass } from "../typescript/game";
 import Apple from "./apple";
 import Player from "./player";
@@ -11,7 +10,6 @@ export default class Game implements GameClass{
   _table: Table;
   _loop: NodeJS.Timer | undefined;
   _tickSpeed: number;
-  _tickStartSpeed: number;
   _score:number;
   _speed: number;
 
@@ -21,7 +19,6 @@ export default class Game implements GameClass{
     this._player = gameInfo.player;
     this._table = gameInfo.table;
     this._tickSpeed = gameInfo.tickStartSpeed;
-    this._tickStartSpeed = gameInfo.tickStartSpeed;
     this._score = 0;
     this._loop = undefined;
     this._speed = gameInfo.startSpeed;
@@ -45,7 +42,7 @@ export default class Game implements GameClass{
     
     // drawing the player
     const player = this.getPlayer()
-    this.getPlayer().getBodyPieces().forEach(piece => {
+    player.getBodyPieces().forEach(piece => {
       table.draw(piece);
     });
 
@@ -82,9 +79,8 @@ export default class Game implements GameClass{
     const speed = this.getSpeed();
     const score = this.getScore();
     const tickSpeed = this.getTickSpeed();
-    const startTickSpeed = this.getStartTickSpeed();
 
-    console.log(speed, score, tickSpeed, startTickSpeed);
+    console.log(speed, score, tickSpeed);
     console.log( tickSpeed + ( score + speed ) * 100 );
     
     this.setSpeed(speed + 1);
@@ -120,16 +116,6 @@ export default class Game implements GameClass{
   public setTickSpeed(tickSpeed: number): void {
 
     this._tickSpeed = tickSpeed;
-
-    this.createLoop();
-
-  }
-  public getStartTickSpeed(): number {
-    return this._tickStartSpeed;
-  }
-  public setStartTickSpeed(tickStartSpeed: number): void {
-
-    this._tickStartSpeed = tickStartSpeed;
 
     this.createLoop();
 

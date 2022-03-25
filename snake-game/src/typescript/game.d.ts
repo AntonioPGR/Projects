@@ -9,7 +9,6 @@ declare class GameClass {
   _table: Table;
   _loop: NodeJS.Timer |undefined;
   _tickSpeed: number;
-  _tickStartSpeed: number;
   _score: number;
   _speed: number;
 
