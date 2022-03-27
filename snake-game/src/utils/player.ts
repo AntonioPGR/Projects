@@ -75,9 +75,14 @@ export default class Player implements PlayerClass{
       // caso haja um erro na direção, a direção padrão do objeto será UP
       newPosition = {
         x: newObjX,
-        y: newObjY - objHeight
+        y: newObjY
       }
-      if (direction.DOWN){
+      if(direction.UP){
+        newPosition = {
+          x: newObjX,
+          y: newObjY - objHeight
+        }
+      } else if (direction.DOWN){
         newPosition = {
           x: newObjX,
           y: newObjY + objHeight
@@ -102,10 +107,9 @@ export default class Player implements PlayerClass{
     // Verifica se a nova posição do objeto é válida
     newPosition = this.checkPosition(newPosition, object.getMaxPosition());
 
-    // ---------- CHANGE POSITION ----------
-    const movePlayer = (newPosition:ObjectPosition) => {
-      object.setPosition(newPosition);
-    }
+    // muda a posição do objeto
+    object.setPosition(newPosition);
+    
 
   }
 
@@ -117,16 +121,41 @@ export default class Player implements PlayerClass{
    */
   public checkPosition(newPosition: ObjectPosition, maxPosition: MaxPosition): ObjectPosition {
     // verifica se a nova posição do objeto é válida
-    if(newPosition.x < maxPosition.minX){
-      newPosition.x = maxPosition.minX;
-    } else if(newPosition.x > maxPosition.maxX){
-      newPosition.x = maxPosition.maxX;
+    const newX = newPosition.x;
+    const newY = newPosition.y;
+    const maxX = maxPosition.maxX;
+    const maxY = maxPosition.maxY;
+    const minX = maxPosition.minX;
+    const minY = maxPosition.minY;
+
+    console.log(`
+      newX: ${newX},
+      newY: ${newY},
+      maxX: ${maxX},
+      maxY: ${maxY},
+      minX: ${minX},
+      minY: ${minY}
+    `)
+
+    // caso a nova posição seja inválida, a nova posição será a posição oposta
+    // Verifica a posição em X
+    if(newX < minX){
+      console.log('newX menor que minX')
+      newPosition.x = maxX
     }
-    if(newPosition.y < maxPosition.minY){
-      newPosition.y = maxPosition.minY;
-    } else if(newPosition.y > maxPosition.maxY){
-      newPosition.y = maxPosition.maxY;
+    else if(newX > maxX){
+      console.log('newX maior que maxX')
+      newPosition.x = minX
     }
+
+    // Verifica a posição em Y
+    if(newY < minY){
+      newPosition.y = maxY
+    }
+    else if(newY > maxY){
+      newPosition.y = minY
+    }
+
     return newPosition;
   }
 
@@ -142,6 +171,12 @@ export default class Player implements PlayerClass{
   }
   public setDirection(direction: Direction): void {
     this._direction = direction
+  }
+  /**
+   * @returns a posição do objeto principal
+   */
+  public getPosition(){
+    return this._bodyPieces[0].getPosition();
   }
 
 }

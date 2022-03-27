@@ -12,13 +12,17 @@ export function GameContainer(){
   return(
     <div>
 
-      <GameCanvasContainer ref={canvasRef}>
-        <p>
-          Your browser can't load the game, please update it and retry!
-        </p>
-      </GameCanvasContainer>
+      <div id="gameCanvas">
+        <GameCanvasContainer ref={canvasRef}>
+          <p>
+            Your browser can't load the game, please update it and retry!
+          </p>
+        </GameCanvasContainer>
+      </div>
 
-      <button onClick={() => { if(canvasRef.current){controlGame(canvasRef.current)}} } >Restart</button>
+      <div id="buttons">
+        <button onClick={() => { if(canvasRef.current){controlGame(canvasRef.current)}} } >Restart</button>
+      </div>
 
     </div>
   )

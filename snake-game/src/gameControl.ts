@@ -13,8 +13,6 @@ let game : Game;
  */
 export function controlGame(gamesCanvas:HTMLCanvasElement){
 
-  console.log(game)
-
   if(!game){
 
     game = createGame(gamesCanvas);
@@ -49,7 +47,7 @@ function createGame(gameCanvas:HTMLCanvasElement) : Game{
     apple: apple,
     player: player,
     table: table,
-    tickStartSpeed: 1000,
+    tickStartSpeed: 500,
     score: 0,
     startSpeed: 1,
   }
@@ -63,7 +61,7 @@ function createGame(gameCanvas:HTMLCanvasElement) : Game{
 // informações de tamanho do jogador e da maçã
 const objectSize : ObjectSize = {
   height: 10,
-  width: 10
+  width: 15
 }
 
 // PLAYER CREATION 
@@ -84,6 +82,7 @@ function createPlayer(table : Table) : Player {
     maxY: table.getTableSize().height - objectSize.height,
     minY: 0,
   };
+  console.log(maxPos);
 
   const skin : ObjectSkin = {
     color: '#51C81D',
@@ -96,15 +95,10 @@ function createPlayer(table : Table) : Player {
     maxPosition: maxPos,
   });
 
-  const startPosition2 : ObjectPosition = {
-    x: table.getTableSize().width / 2,
-    y: table.getTableSize().height / 2
-  }
-
   const playerDirection : Direction = {
     UP: false,
     DOWN: false,
-    LEFT: true,
+    LEFT: false,
     RIGHT: false,
   }
 

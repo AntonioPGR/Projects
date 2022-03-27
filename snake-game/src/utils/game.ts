@@ -54,7 +54,6 @@ export default class Game implements GameClass{
   createLoop(){
     // reseta o looping
     this.setLoop(undefined);
-    console.log(this.getTickSpeed());
 
     const tick = this.getTickSpeed();
     this.setLoop(setInterval(() => {
@@ -73,15 +72,17 @@ export default class Game implements GameClass{
 
     //Move the player
     const player = this.getPlayer();
+
+    console.log(player.getPosition())
+
     player.update();
+
+    console.log(player.getPosition())
 
     //increase the speed time of tick
     const speed = this.getSpeed();
     const score = this.getScore();
     const tickSpeed = this.getTickSpeed();
-
-    console.log(speed, score, tickSpeed);
-    console.log( tickSpeed + ( score + speed ) * 100 );
     
     this.setSpeed(speed + 1);
 
