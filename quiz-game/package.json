@@ -1,0 +1,22 @@
+{
+  "name": "quiz-game",
+  "version": "1.0.0",
+  "description": "a quiz game app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonioPGR/Projects.git"
+  },
+  "author": "Antonio Pacheco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AntonioPGR/Projects/issues"
+  },
+  "homepage": "https://github.com/AntonioPGR/Projects#readme",
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
+}

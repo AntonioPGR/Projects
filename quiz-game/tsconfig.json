@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    // diretório de saida
+    "outDir": "./dist/js",
+    // ecma script de compilação
+    "target": "ES6",
+    // não compilar em caso de erro
+    "noEmitOnError": true,
+    // não permitir any
+    "noImplicitAny": true,
+  },
+  "include": ["./app/**/*"]
+}
