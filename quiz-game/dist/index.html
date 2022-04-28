@@ -8,12 +8,64 @@
 
   <title> Quiz </title>
 
-
+  <link rel="stylesheet" href="./css/import.css">
+  <link rel="shortcut icon" href="./assets/icons/quiz-icon.png" type="image/x-icon">
 
 </head>
 <body>
   
+  <header class="main__header">
 
+    <h1 class="main__title">Quiz App</h1>
+    <h2 class="main__subtitle"></h2>
+
+  </header>
+
+  <main class="main">
+
+    <form id="quiz__form">
+
+      <div class="quiz__form__topic" id="quiz__themes">
+
+        <h3 class="topic__title">Themes:</h3>
+        
+        <div class="form__option">
+          <input class="topic__option" type="radio" name="theme" id="soccer-theme" checked>
+          <label class="option__text" for="soccer-theme">Soccer</label>
+        </div>
+        <div class="form__option">
+          <input class="topic__option" type="radio" name="theme" id="computer-theme" >
+          <label class="option__text" for="computer-theme">Computer</label>
+        </div>
+        <div class="form__option">
+          <input class="topic__option" type="radio" name="theme" id="video-game-theme" >
+          <label class="option__text" for="video-game-theme">Video games</label>
+        </div>
+      </div>
+
+      <div class="quiz__form__topic" id="quiz__difficulty">
+
+        <h3 class="topic__title">Difficulty</h3>
+        
+        <div class="form__option">
+          <input class="topic__option" type="radio" name="difficulty" id="easyOption" checked>
+          <label class="option__text" for="easyOption">Easy</label>
+        </div>
+        <div class="form__option">
+          <input class="topic__option" type="radio" name="difficulty" id="mediumOption" >
+          <label class="option__text" for="mediumOption">Medium</label>
+        </div>
+        <div class="form__option">
+          <input class="topic__option" type="radio" name="difficulty" id="hardOption" >
+          <label class="option__text" for="hardOption">Hard</label>
+        </div>
+      </div>
+
+      <button type="submit" class="start_button" id="start__button" >Start Quiz</button>
+
+    </form>
+
+  </main> 
 
 </body>
 </html>

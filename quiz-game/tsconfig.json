@@ -8,6 +8,8 @@
     "noEmitOnError": true,
     // não permitir any
     "noImplicitAny": true,
+    // Monitora e compila a cada save
+    "watch": true,
   },
   "include": ["./app/**/*"]
 }

@@ -1,0 +1,27 @@
+/*
+  * RESET DO CSS DA PÁGINA
+*/
+@import url('./reset.css');
+
+/*
+  * BODY AND HTML
+*/
+@import url('./html-body/html-body.css');
+
+/*
+  * HEADER
+*/
+@import url('./header/header.css');
+@import url('./header/header_title.css');
+
+/*
+  * MAIN
+*/
+@import url('./main/main.css');
+
+/*
+  * QUIZ FORM
+*/
+@import url('./quiz-form/quiz_form.css');
+@import url('./quiz-form/form_options.css');
+@import url('./quiz-form/form_button.css');

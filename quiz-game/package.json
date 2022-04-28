@@ -18,5 +18,8 @@
   "homepage": "https://github.com/AntonioPGR/Projects#readme",
   "devDependencies": {
     "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3"
   }
 }
