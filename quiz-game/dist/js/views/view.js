@@ -11,7 +11,6 @@ export class View {
      * @param informations informações a serem usadas no template
      */
     render(informations) {
-        console.log('render');
         const local = this.renderLocal;
         const template = this.template(informations);
         local.innerHTML = template;

@@ -5,16 +5,15 @@ export abstract class View<T>{
    * @param renderLocal a HTMLElement where the view will be render
    */
   constructor(
-    private renderLocal : HTMLElement
+    protected renderLocal : HTMLElement
   ){}
 
   /**
    * renderiza o template do elemento na classe mostrada
    * @param informations informações a serem usadas no template
    */
-  public render(informations:T){
+  public render(informations:T) :void {
 
-    console.log('render')
     const local = this.renderLocal;
     const template = this.template(informations)
     local.innerHTML = template;

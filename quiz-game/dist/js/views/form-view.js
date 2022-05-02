@@ -1,11 +1,25 @@
 import { View } from "./view.js";
+import { GameDifficulty } from "../enums/gameDifficults.js";
+import { GameThemes } from "../enums/gameThemes.js";
 /**
  * Controla a vizualização do formulário inicial
  */
 export class FormView extends View {
+    /**
+     * Método re-escrito de View, adicionando evento de submit ao formulário
+     * @param onSubmit função a ser executada ao submeter o formulário
+     */
+    render(onSubmit) {
+        super.render(onSubmit);
+        const form = document.querySelector("form.quiz__form");
+        form.addEventListener("submit", (ev) => {
+            ev.preventDefault();
+            onSubmit();
+        });
+    }
     template(functions) {
         return `
-    <form id="quiz__form" onSubmit=${functions}>
+    <form class="quiz__form">
 
       ${this.themes_template()}
 
@@ -23,17 +37,33 @@ export class FormView extends View {
       <h3 class="topic__title">Themes:</h3>
         
       <div class="form__option">
-        <input class="topic__option" type="radio" name="theme" id="soccer-theme" checked>
-        <label class="option__text" for="soccer-theme">Soccer</label>
+        <input 
+          class="topic__option" 
+          type="radio" 
+          name="theme" 
+          id="sports-theme" 
+          value=${GameThemes.sports}
+          checked>
+        <label class="option__text" for="sports-theme">Sports</label>
       </div>
   
       <div class="form__option">
-        <input class="topic__option" type="radio" name="theme" id="computer-theme" >
+        <input 
+          class="topic__option" 
+          type="radio" 
+          name="theme" 
+          id="computer-theme" 
+          value=${GameThemes.computer}>
         <label class="option__text" for="computer-theme">Computer</label>
       </div>
   
       <div class="form__option">
-        <input class="topic__option" type="radio" name="theme" id="video-game-theme" >
+        <input 
+          class="topic__option" 
+          type="radio" 
+          name="theme" 
+          id="video-game-theme" 
+          value=${GameThemes.videoGames}>
         <label class="option__text" for="video-game-theme">Video games</label>
       </div>
         
@@ -47,17 +77,33 @@ export class FormView extends View {
         <h3 class="topic__title">Difficulty</h3>
         
         <div class="form__option">
-          <input class="topic__option" type="radio" name="difficulty" id="easyOption" checked>
+          <input 
+            class="topic__option" 
+            type="radio" 
+            name="difficulty" 
+            id="easyOption" 
+            value=${GameDifficulty.easy}
+            checked>
           <label class="option__text" for="easyOption">Easy</label>
         </div>
 
         <div class="form__option">
-          <input class="topic__option" type="radio" name="difficulty" id="mediumOption" >
+          <input 
+            class="topic__option" 
+            type="radio" 
+            name="difficulty" 
+            id="mediumOption" 
+            value=${GameDifficulty.medium}>
           <label class="option__text" for="mediumOption">Medium</label>
         </div>
 
         <div class="form__option">
-          <input class="topic__option" type="radio" name="difficulty" id="hardOption" >
+          <input 
+            class="topic__option" 
+            type="radio" 
+            name="difficulty" 
+            id="hardOption" 
+            value=${GameDifficulty.hard}>
           <label class="option__text" for="hardOption">Hard</label>
         </div>
 
