@@ -6,7 +6,16 @@ export class FormController {
         this.renderElement = renderElement;
         this.onSubmit = onSubmit;
         this.formView = new FormView(this.renderElement);
-        this.formView.render(this.onFormSubmit);
+        this.formView.render(() => this.onFormSubmit());
+    }
+    onFormSubmit() {
+        const difficulty = this.getGameDifficulty();
+        const theme = this.getGameTheme();
+        const gameConfig = {
+            difficulty: difficulty,
+            theme: theme,
+        };
+        this.onSubmit(gameConfig);
     }
     getGameDifficulty() {
         const difficultyInput = document.querySelector("input.topic__option[name=difficulty]:checked");
@@ -45,14 +54,5 @@ export class FormController {
             theme = GameThemes.default;
         }
         return theme;
-    }
-    onFormSubmit() {
-        const difficulty = this.getGameDifficulty();
-        const theme = this.getGameTheme();
-        const gameConfig = {
-            difficulty: difficulty,
-            theme: theme,
-        };
-        this.onSubmit(gameConfig);
     }
 }

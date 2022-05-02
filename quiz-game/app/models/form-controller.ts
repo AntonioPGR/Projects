@@ -13,15 +13,29 @@ export class FormController{
   ){
 
     this.formView = new FormView(this.renderElement)
-    this.formView.render(this.onFormSubmit)
+    this.formView.render(() => this.onFormSubmit())
 
   }
 
-  private getGameDifficulty() : GameDifficulty{
+  private onFormSubmit(){
 
+    const difficulty = this.getGameDifficulty()
+    const theme = this.getGameTheme()
+    
+    const gameConfig : GameInfo = {
+      difficulty: difficulty,
+      theme: theme,
+    }
+    
+    this.onSubmit(gameConfig)
+    
+  }
+  
+  private getGameDifficulty() : GameDifficulty{
+  
     const difficultyInput : HTMLInputElement = document.querySelector("input.topic__option[name=difficulty]:checked");
     const difficultyValue = difficultyInput.value;
-
+  
     let difficulty;
     if(difficultyValue === GameDifficulty.easy){
       difficulty = GameDifficulty.easy;
@@ -33,15 +47,15 @@ export class FormController{
       console.log("Default game difficulty")
       difficulty = GameDifficulty.default
     }
-
+  
     return difficulty;
   }
-
+  
   private getGameTheme() : GameThemes{
-
+  
     const themeInput : HTMLInputElement = document.querySelector("input.topic__option[name=theme]:checked");
     const themeValue = Number(themeInput.value);
-
+  
     let theme;
     if(themeValue === GameThemes.computer){
       theme = GameThemes.computer;
@@ -53,23 +67,9 @@ export class FormController{
       console.log("Default game theme")
       theme = GameThemes.default
     }
-
+  
     return theme
   }
-
-  private onFormSubmit(){
-    const difficulty = this.getGameDifficulty()
-    const theme = this.getGameTheme()
-
-    const gameConfig : GameInfo = {
-      difficulty: difficulty,
-      theme: theme,
-    }
-    
-    this.onSubmit(gameConfig)
-
-  }
-
-
-
+  
+  
 }
