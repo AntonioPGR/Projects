@@ -19,8 +19,8 @@ export class FormController{
 
   private onFormSubmit(){
 
-    const difficulty = this.getGameDifficulty()
-    const theme = this.getGameTheme()
+    const difficulty = FormController.getGameDifficulty()
+    const theme = FormController.getGameTheme()
     
     const gameConfig : GameInfo = {
       difficulty: difficulty,
@@ -31,7 +31,7 @@ export class FormController{
     
   }
   
-  private getGameDifficulty() : GameDifficulty{
+  public static getGameDifficulty() : GameDifficulty{
   
     const difficultyInput : HTMLInputElement = document.querySelector("input.topic__option[name=difficulty]:checked");
     const difficultyValue = difficultyInput.value;
@@ -51,7 +51,7 @@ export class FormController{
     return difficulty;
   }
   
-  private getGameTheme() : GameThemes{
+  private static getGameTheme() : GameThemes{
   
     const themeInput : HTMLInputElement = document.querySelector("input.topic__option[name=theme]:checked");
     const themeValue = Number(themeInput.value);

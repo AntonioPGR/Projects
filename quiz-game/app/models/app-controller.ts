@@ -15,15 +15,13 @@ export class AppController{
     // checar se o elemento realmento existe
     this.renderElement = document.querySelector(renderElement);
 
-    this.quizForm = new FormController(this.renderElement, this.onQuizFormSubmit)
+    this.quizForm = new FormController(this.renderElement, (gameInfo:GameInfo) => this.onQuizFormSubmit(gameInfo))
 
     this.gameController = new GameController(this.renderElement);
 
   }
 
-  private onQuizFormSubmit(gameInfo : GameInfo){
-
-    console.log(this)
+  private onQuizFormSubmit(gameInfo : GameInfo) : void{
 
     this.gameController.createGame(gameInfo)
 

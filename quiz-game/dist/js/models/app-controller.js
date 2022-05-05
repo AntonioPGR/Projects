@@ -4,11 +4,10 @@ export class AppController {
     constructor(renderElement) {
         // checar se o elemento realmento existe
         this.renderElement = document.querySelector(renderElement);
-        this.quizForm = new FormController(this.renderElement, this.onQuizFormSubmit);
+        this.quizForm = new FormController(this.renderElement, (gameInfo) => this.onQuizFormSubmit(gameInfo));
         this.gameController = new GameController(this.renderElement);
     }
     onQuizFormSubmit(gameInfo) {
-        console.log(this);
         this.gameController.createGame(gameInfo);
     }
 }

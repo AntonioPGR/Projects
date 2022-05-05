@@ -13,7 +13,7 @@ export class FormView extends View <voidFunction> {
    * @param onSubmit função a ser executada ao submeter o formulário
    */
   public render(onSubmit:voidFunction): void {
-    
+
     super.render(onSubmit);
     const form = document.querySelector("form.quiz__form");
     form.addEventListener("submit", (ev) => {
