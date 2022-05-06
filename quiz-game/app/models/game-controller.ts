@@ -1,4 +1,4 @@
-import { GameInfo, QuestionsApiResponse, Question, QuestionInfo } from "../types.js"
+import { GameInfo, QuestionsApiResponse, Question, QuestionInfo, voidFunction } from "../types.js"
 import { QuestionView } from '../views/question-view.js';
 
 export class GameController{
@@ -9,7 +9,8 @@ export class GameController{
   private score : number = 0
 
   constructor(
-    private renderElement : HTMLElement
+    private renderElement : HTMLElement,
+    private onGameFinish : Function
   ){
 
     this.renderView = new QuestionView(this.renderElement)
@@ -61,12 +62,24 @@ export class GameController{
 
   private makeSubmit() : void{
 
-    if(!this.checkAnswer()){
-      window.alert("Unaccept answer!")
-      return
+    const isFinished = this.isGameQuestionsFinished();
+
+    if(!isFinished){
+
+      if(this.checkAnswer()){
+  
+        this.increaseScore();
+  
+      }
+
+      this.updateQuestionView();
+
+    } else {
+
+      this.onGameFinish(this.score)
+
     }
 
-    this.changeQuestion();
 
   }
 
@@ -76,31 +89,42 @@ export class GameController{
     const response = responseInput.value;
     const current_question : Question = this.currentQuestion;
     const correct_answer = current_question.correct_answer;
-    
-    // check if the response is accept
-    if(!response || typeof response !== 'string'){
-      return false;
-    } 
-
-    console.log(correct_answer)
-    console.log(response)
 
     if(response === correct_answer){
-      console.log('correct')
-    } else {
-      console.log('uncorrect')
-    }
+      
+      return true
 
-    return true;
+    } else {
+
+      return false
+
+    }
 
   }
 
-  private changeQuestion() : void{
+  private increaseScore() : void{
+    this.score += 1
+  }
 
+  private isGameQuestionsFinished() : boolean{
+    
+    if(this.questions.length > this.questionNumber){
+      console.log("unfinished");
+      this.increaseQuestionNumber()
+      return false
+    } else {
+      console.log("fininhed");
+      return true
+    }
+
+  }
+
+  private increaseQuestionNumber(){
+    this.questionNumber += 1
   }
 
   private get currentQuestion() : Question{
-    return this.questions[this.questionNumber];
+    return this.questions[this.questionNumber - 1];
   }
 
 }

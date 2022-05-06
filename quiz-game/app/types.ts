@@ -24,3 +24,7 @@ export type QuestionInfo = {
   question: Question,
   onSubmit: voidFunction;
 }
+export type ResultsInfo = {
+  score: number;
+  onReset: voidFunction;
+}

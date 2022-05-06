@@ -1,5 +1,5 @@
 import { View } from "./view.js";
-import { GameInfo, onQuizFormSubmit, voidFunction } from "../types.js";
+import { voidFunction } from "../types.js";
 import { GameDifficulty } from "../enums/gameDifficults.js";
 import { GameThemes } from "../enums/gameThemes.js";
 

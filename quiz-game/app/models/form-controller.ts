@@ -13,8 +13,11 @@ export class FormController{
   ){
 
     this.formView = new FormView(this.renderElement)
-    this.formView.render(() => this.onFormSubmit())
 
+  }
+
+  public renderForm(){
+    this.formView.render(() => this.onFormSubmit())
   }
 
   private onFormSubmit(){

@@ -6,6 +6,8 @@ export class FormController {
         this.renderElement = renderElement;
         this.onSubmit = onSubmit;
         this.formView = new FormView(this.renderElement);
+    }
+    renderForm() {
         this.formView.render(() => this.onFormSubmit());
     }
     onFormSubmit() {

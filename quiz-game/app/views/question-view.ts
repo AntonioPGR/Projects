@@ -1,4 +1,4 @@
-import { Question, QuestionInfo } from "../types.js";
+import { QuestionInfo } from "../types.js";
 import { View } from "./view.js";
 
 export class QuestionView extends View<QuestionInfo>{

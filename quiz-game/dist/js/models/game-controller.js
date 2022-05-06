@@ -9,8 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { QuestionView } from '../views/question-view.js';
 export class GameController {
-    constructor(renderElement) {
+    constructor(renderElement, onGameFinish) {
         this.renderElement = renderElement;
+        this.onGameFinish = onGameFinish;
         this.questionNumber = 1;
         this.score = 0;
         this.renderView = new QuestionView(this.renderElement);
@@ -47,34 +48,47 @@ export class GameController {
         this.renderView.render(questionInfo);
     }
     makeSubmit() {
-        if (!this.checkAnswer()) {
-            window.alert("Unaccept answer!");
-            return;
+        const isFinished = this.isGameQuestionsFinished();
+        if (!isFinished) {
+            if (this.checkAnswer()) {
+                this.increaseScore();
+            }
+            this.updateQuestionView();
         }
-        this.changeQuestion();
+        else {
+            this.onGameFinish(this.score);
+        }
     }
     checkAnswer() {
         const responseInput = document.querySelector("input.question:checked");
         const response = responseInput.value;
         const current_question = this.currentQuestion;
         const correct_answer = current_question.correct_answer;
-        // check if the response is accept
-        if (!response || typeof response !== 'string') {
-            return false;
-        }
-        console.log(correct_answer);
-        console.log(response);
         if (response === correct_answer) {
-            console.log('correct');
+            return true;
         }
         else {
-            console.log('uncorrect');
+            return false;
         }
-        return true;
     }
-    changeQuestion() {
+    increaseScore() {
+        this.score += 1;
+    }
+    isGameQuestionsFinished() {
+        if (this.questions.length > this.questionNumber) {
+            console.log("unfinished");
+            this.increaseQuestionNumber();
+            return false;
+        }
+        else {
+            console.log("fininhed");
+            return true;
+        }
+    }
+    increaseQuestionNumber() {
+        this.questionNumber += 1;
     }
     get currentQuestion() {
-        return this.questions[this.questionNumber];
+        return this.questions[this.questionNumber - 1];
     }
 }
