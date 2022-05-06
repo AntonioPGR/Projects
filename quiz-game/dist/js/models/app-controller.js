@@ -11,6 +11,7 @@ export class AppController {
         this.resultsView = new ResultsView(this.renderElement);
     }
     reset() {
+        console.log('reseting');
         this.quizForm.renderForm();
     }
     onQuizFormSubmit(gameInfo) {

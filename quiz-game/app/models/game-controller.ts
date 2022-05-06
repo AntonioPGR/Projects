@@ -62,15 +62,21 @@ export class GameController{
 
   private makeSubmit() : void{
 
+    const responseInput : HTMLInputElement = document.querySelector("input.question:checked")
+    const response = responseInput.value;
+    const correct_answer = this.currentQuestion.correct_answer;
+
+    console.log(correct_answer, response)
+    console.log(this.checkAnswer(correct_answer, response));
+
+    if(this.checkAnswer(correct_answer, response)){
+  
+      this.increaseScore();
+
+    }
+
     const isFinished = this.isGameQuestionsFinished();
-
     if(!isFinished){
-
-      if(this.checkAnswer()){
-  
-        this.increaseScore();
-  
-      }
 
       this.updateQuestionView();
 
@@ -83,12 +89,9 @@ export class GameController{
 
   }
 
-  private checkAnswer() : boolean{
+  private checkAnswer(correct_answer : string, user_answer : string) : boolean{
     
-    const responseInput : HTMLInputElement = document.querySelector("input.question:checked")
-    const response = responseInput.value;
-    const current_question : Question = this.currentQuestion;
-    const correct_answer = current_question.correct_answer;
+    const response = user_answer;
 
     if(response === correct_answer){
       
@@ -109,11 +112,11 @@ export class GameController{
   private isGameQuestionsFinished() : boolean{
     
     if(this.questions.length > this.questionNumber){
-      console.log("unfinished");
       this.increaseQuestionNumber()
       return false
+
     } else {
-      console.log("fininhed");
+
       return true
     }
 

@@ -27,6 +27,7 @@ export class AppController{
   }
 
   private reset(){
+    console.log('reseting')
     this.quizForm.renderForm()
   }
 
@@ -36,7 +37,7 @@ export class AppController{
 
   }
 
-  private onGameFinish(score:number){
+  private onGameFinish(score:number){  
     const resultsInfo : ResultsInfo = {
       onReset: () => this.reset(),
       score: score

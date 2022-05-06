@@ -48,22 +48,24 @@ export class GameController {
         this.renderView.render(questionInfo);
     }
     makeSubmit() {
+        const responseInput = document.querySelector("input.question:checked");
+        const response = responseInput.value;
+        const correct_answer = this.currentQuestion.correct_answer;
+        console.log(correct_answer, response);
+        console.log(this.checkAnswer(correct_answer, response));
+        if (this.checkAnswer(correct_answer, response)) {
+            this.increaseScore();
+        }
         const isFinished = this.isGameQuestionsFinished();
         if (!isFinished) {
-            if (this.checkAnswer()) {
-                this.increaseScore();
-            }
             this.updateQuestionView();
         }
         else {
             this.onGameFinish(this.score);
         }
     }
-    checkAnswer() {
-        const responseInput = document.querySelector("input.question:checked");
-        const response = responseInput.value;
-        const current_question = this.currentQuestion;
-        const correct_answer = current_question.correct_answer;
+    checkAnswer(correct_answer, user_answer) {
+        const response = user_answer;
         if (response === correct_answer) {
             return true;
         }
@@ -76,12 +78,10 @@ export class GameController {
     }
     isGameQuestionsFinished() {
         if (this.questions.length > this.questionNumber) {
-            console.log("unfinished");
             this.increaseQuestionNumber();
             return false;
         }
         else {
-            console.log("fininhed");
             return true;
         }
     }

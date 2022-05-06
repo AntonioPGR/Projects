@@ -25,3 +25,8 @@
 @import url('./quiz-form/quiz_form.css');
 @import url('./quiz-form/form_options.css');
 @import url('./quiz-form/form_button.css');
+
+/*
+  * RESULTS
+*/
+@import url("./results/score.css");
