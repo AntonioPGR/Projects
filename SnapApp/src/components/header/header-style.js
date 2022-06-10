@@ -3,18 +3,16 @@ import { shade } from "polished";
 
 const HeaderContainer = styled.header`
    height: 45px;
-   padding: 0 5%;
 
-   background-color: ${props => props.theme.colors.primary};
+   background-color: #0F0E0C ;/*${props => props.theme.colors.primary};*/
 
    display: flex;
    align-items: center;
-   justify-content: space-between;
+   justify-content: space-around;
 
-   * {
-      border: 1px solid ${props => props.theme.colors.secundary};
-      padding: 8px;
-      border-radius: 5px;
+   img{
+      height: 40px;
+      width: 40px;
    }
 `
 

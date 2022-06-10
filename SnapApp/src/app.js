@@ -28,12 +28,13 @@ const GlobalStyle = createGlobalStyle`
    }
    
    body{
-      background-image: url(${props => props.theme.images.bgImageUrl});
+      /* background-image: url(${props => props.theme.images.bgImageUrl});
       background-repeat: no-repeat;
       background-size: cover;
-      background-position: center;
+      background-position: center; */
+      background-color: #0F0E0C;
       
-      background-color: ${props => props.theme.colors.bgColor};
+      /* background-color: ${props => props.theme.colors.bgColor}; */
    }
 `
 
